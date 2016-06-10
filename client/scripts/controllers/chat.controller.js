@@ -1,7 +1,6 @@
 import Ionic from 'ionic-scripts';
 import { _ } from 'meteor/underscore';
 import { Meteor } from 'meteor/meteor';
-import { MeteorCameraUI } from 'meteor/okland:camera-ui';
 import { Controller } from 'angular-ecmascript/module-helpers';
 import { Chats, Messages } from '../../../lib/collections';
 
@@ -19,23 +18,6 @@ export default class ChatCtrl extends Controller {
     const profile = this.currentUser && this.currentUser.profile;
     this.name = profile ? profile.name : '';
 
-    /*function onSuccess(contacts) {
-     this.contacts = contacts;
-     alert('Found ' + contacts.length + ' contacts.');
-     };*/
-
-    /*function onError(contactError) {
-     alert('onError!');
-     };*/
-
-
-    //var options      = new ContactFindOptions();
-    // options.filter   = this.contactId;
-    ///navigator.contacts.find([navigator.contacts.fieldType.id], (contacts) => {
-    ///this.contacts = contacts;
-    //alert('Found ' + contacts.length + ' contacts.');
-    //}, onError, options);
-
 
     this.contacts = this.NewChat.contacts;
     for (var i in this.contacts) {
@@ -52,6 +34,9 @@ export default class ChatCtrl extends Controller {
 
 
   }
+
+
+
 
   sendFlag () {
 
@@ -112,4 +97,4 @@ export default class ChatCtrl extends Controller {
 
 }
 
-ChatCtrl.$inject = ['$stateParams', '$timeout', '$ionicActionSheet', '$ionicScrollDelegate', 'NewChat', '$ionicPopup', '$log'];
+ChatCtrl.$inject = ['$stateParams', '$timeout', '$ionicModal', '$ionicActionSheet', '$ionicScrollDelegate', 'NewChat', '$ionicPopup', '$log'];

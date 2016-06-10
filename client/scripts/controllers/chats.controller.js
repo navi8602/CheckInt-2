@@ -32,7 +32,19 @@ export default class ChatsCtrl extends Controller {
 
   }
 
+  openSearch (){
+    console.log('Fuck you00');
+    var $scope = this;
+    for (var i in this.$scope.friends) {
+      var room = Room.getByUserId(this.$scope.friends[i].id);
 
+      this.$scope.friends[i].room = room;
+    }
+
+    this.$ionicModal.fromTemplateUrl('client/templates/modal/search.html', {
+      animation: 'slide-in-up'
+    })
+  };
 
 
   onContact(contact) {

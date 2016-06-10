@@ -41,6 +41,15 @@ class RoutesConfig extends Config {
           }
         }
       })
+      .state('tab.groups', {
+        url: '/groups',
+        views: {
+          'tab-groups': {
+            templateUrl: 'client/templates/tab-groups.html',
+            controller: 'InterestFriend as friend'
+          }
+        }
+      })
       .state('login', {
         url: '/login',
         templateUrl: 'client/templates/login.html',

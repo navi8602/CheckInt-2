@@ -25,6 +25,7 @@ import ChatPictureFilter from '../filters/chat-picture.filter';
 import NewChatService from '../services/new-chat.service';
 import SignUpPhoto from '../controllers/sign.up.photo';
 import SignUpSuccess from '../controllers/sign.up.success';
+import InterestFriend from '../controllers/interest.friend';
 import Routes from '../routes';
 
 const App = 'Whatsapp';
@@ -61,6 +62,7 @@ new Loader(App)
   .load(NewChatService)
   .load(SignUpPhoto)
   .load(SignUpSuccess)
+  .load(InterestFriend)
   .load(Routes);
 
 
