@@ -1,4 +1,4 @@
-<ion-view hide-nav-bar="true">
+<ion-view>
     <ion-header-bar class="bar-stable item-input-inset">
         <label class="item-input-wrapper">
             <i class="icon ion-ios-search placeholder-icon"></i>
@@ -9,9 +9,10 @@
         </button>
     </ion-header-bar>
       <ion-content>
+          <ion-spinner icon="android" ng-show="myValue" class="ng-hide"></ion-spinner>
         <ion-list>
             <span ng-repeat="contact in chats.contacts | filter: search | orderBy:'name.givenName'">
-                <ion-item class="item" nav-direction="forward"  href="#/chatse/{{ ::contact.id }}">
+                <ion-item class="item" on-touch="onTouch()" nav-direction="forward"  href="#/chatse/{{ ::contact.id }}">
 
                     <h3>
                         <small>{{::contact.name.givenName}}</small>

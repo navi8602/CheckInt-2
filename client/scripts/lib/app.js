@@ -26,9 +26,10 @@ import NewChatService from '../services/new-chat.service';
 import SignUpPhoto from '../controllers/sign.up.photo';
 import SignUpSuccess from '../controllers/sign.up.success';
 import InterestFriend from '../controllers/interest.friend';
+import FriendDetail from '../controllers/friend.detail.js'
 import Routes from '../routes';
 
-const App = 'Whatsapp';
+const App = 'CheckInt';
 
 // App
 Angular.module(App, [
@@ -63,6 +64,7 @@ new Loader(App)
   .load(SignUpPhoto)
   .load(SignUpSuccess)
   .load(InterestFriend)
+  .load(FriendDetail)
   .load(Routes);
 
 

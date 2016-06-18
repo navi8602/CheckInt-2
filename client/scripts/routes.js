@@ -46,7 +46,23 @@ class RoutesConfig extends Config {
         views: {
           'tab-groups': {
             templateUrl: 'client/templates/tab-groups.html',
-            controller: 'InterestFriend as friend'
+            controller: 'InterestFriend as friend',
+            resolve: {
+              interestByUserId() {
+                return Meteor.subscribe('interestByUserId');
+              }
+            }
+          }
+
+        }
+      })
+      .state('friend', {
+        url: '/friend_ineters/:contactId',
+        templateUrl: 'client/templates/friend-interest.html',
+        controller: 'FriendDetail as friends',
+        resolve: {
+          interestByUserId() {
+            return Meteor.subscribe('interestByUserId');
           }
         }
       })
@@ -82,7 +98,7 @@ class RoutesConfig extends Config {
         views: {
           'tab-settings': {
             templateUrl: 'client/templates/settings.html',
-            controller: 'SettingsCtrl as settings',
+            controller: 'SettingsCtrl as settings'
           }
         }
       });

@@ -1,38 +1,18 @@
 <ion-view view-title="Интересы">
     <ion-content>
-        <ion-list>
+        <ion-list ng-repeat="item in friend.list">
              <span>
-                <ion-item class="item-avatar" type="item-text-wrap" href="#/room/{{friend.room.id}}" nav-direction="forward">
-
+                <ion-item class="item-avatar" type="item-text-wrap" href="#/friend_ineters/{{ ::item.to_id }}" nav-direction="forward">
                     <img ng-src="/user-default.svg">
-
-                <span class="badge avatar-badge avatar-badge-s"
-                      ng-class="{'badge-positive':friend.friendType=='Messenger', 'badge-stable':friend.friendType=='facebook'}">
-                    <i class="icon ion-ios-bolt" ng-if="friend.friendType=='Messenger'"></i>
-                    <i class="icon ion-social-facebook light" ng-if="friend.friendType=='facebook'"></i>
+                <span class="badge avatar-badge avatar-badge-s">
+                    <i class="icon ion-ios-bolt" ></i>
+                    <i class="icon ion-social-facebook light"></i>
                 </span>
 
                     <h3>
-                        <small>Имя кому отправлено</small>
+                        <small>{{item.to_name}}</small>
                     </h3>
-                    <p>Ответ не получен</p>
-                </ion-item>
-            </span>
-            <span>
-                <ion-item class="item-avatar" type="item-text-wrap" href="#/room/{{friend.room.id}}" nav-direction="forward">
-
-                    <img ng-src="/user-default.svg">
-
-                <span class="badge avatar-badge avatar-badge-s"
-                      ng-class="{'badge-positive':friend.friendType=='Messenger', 'badge-stable':friend.friendType=='facebook'}">
-                    <i class="icon ion-ios-bolt" ng-if="friend.friendType=='Messenger'"></i>
-                    <i class="icon ion-social-facebook light" ng-if="friend.friendType=='facebook'"></i>
-                </span>
-
-                    <h3>
-                        <small>Имя кому отправлено</small>
-                    </h3>
-                    <p>Ответ получен</p>
+                    <p>{{item.status}}</p>
                 </ion-item>
             </span>
         </ion-list>

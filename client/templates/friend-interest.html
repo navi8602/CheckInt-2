@@ -1,0 +1,54 @@
+<ion-view view-title="Contact">
+    <ion-nav-buttons side="primary">
+        <button nav-direction="back" class="button button-clear button-icon button-positive icon ion-ios-arrow-back" ng-click="historyBack()">
+            Назад
+        </button>
+    </ion-nav-buttons>
+
+    <ion-content id="group-setting">
+        <ion-list>
+            <ion-item  class="item-avatar item-avatar-center item-avatar-xl text-center">
+                <img ng-src="/user-default.svg">
+
+                <h2>
+                    <small>{{friends.item.to_name}}</small>
+                </h2>
+
+                <p>{{friends.item.status}}</p>
+            </ion-item>
+
+            <ion-item class="item-icon-left" ng-show="friends.currentUser.phone.number == friends.currentUser.phone.number">
+                <i class="icon ion-ios-chatbubble-outline positive"></i>
+                {{friends.currentUser.phone.number}}
+            </ion-item>
+
+            <div style="height: 35px"></div>
+
+            <div class="padding text-center" >
+                <p>
+                    Узнай сходятся ли ваши интересы с "{{friends.item.to_name}}".
+                    Для этого выбери и отравь свой интерес.
+                </p>
+            </div>
+
+            <ion-item class="item-icon-left" ng-click="friends.setNotification();">
+                <i class="icon ion-ios-chatbubble-outline positive"></i>
+                {{friends.interest}}
+            </ion-item>
+
+            <div class="padding text-center">
+                <a class="button button-clear button-large button-balanced " ng-click="friends.sendInteretsOneSms()" ng-disabled="friends.sendFlag()">
+                    Отправить
+                </a>
+            </div>
+
+            <div style="height: 35px"></div>
+
+            <ion-item class="assertive" ng-click="showConfirmRemove();">
+                Remove from Group
+            </ion-item>
+
+            <div style="height: 35px"></div>
+        </ion-list>
+    </ion-content>
+</ion-view>

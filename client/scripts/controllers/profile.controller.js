@@ -8,6 +8,7 @@ export default class ProfileCtrl extends Controller {
 
     const profile = this.currentUser && this.currentUser.profile;
     this.name = profile ? profile.name : '';
+    console.log(this.currentUser );
   }
 
   updatePicture () {

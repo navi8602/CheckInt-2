@@ -13,25 +13,7 @@ export default class NewChatCtrl extends Controller {
         return Meteor.users.find({ _id: { $ne: this.currentUserId } });
       }
     });
-    function onSuccess(contacts) {
-      this.contacts = contacts;
-      alert('Found ' + contacts.length + ' contacts.');
-      console.log(contacts);
-    };
 
-    function onError(contactError) {
-      alert('onError!');
-    };
-
-    document.addEventListener("deviceready", () => {
-      console.log(navigator.contacts);
-      navigator.contacts.find(["*"], (contacts) => {
-        this.contacts = contacts;
-        alert('Found ' + contacts.length + ' contacts.');
-        console.log(contacts);
-      }, onError);
-
-    }, false);
   }
 
 

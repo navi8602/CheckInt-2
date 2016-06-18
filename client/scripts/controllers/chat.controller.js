@@ -5,9 +5,18 @@ import { Controller } from 'angular-ecmascript/module-helpers';
 import { Chats, Messages } from '../../../lib/collections';
 
 export default class ChatCtrl extends Controller {
+
   constructor() {
     super(...arguments);
-    this.interest = 'Выберите интерес';
+
+    var self = this;
+
+    this.defaultInterest = 'Выберите интерес';
+    this.subscribe('InterestByUserId', function() {
+      self.interest = Interest.findOne({to_id: self.contactId});
+      self.interest = self.interest && self.interest.name ? self.interest.name : self.defaultInterest;
+
+    });
     this.phone = false;
     this.contactId = this.$stateParams.contactId;
     this.isIOS = Ionic.Platform.isWebView() && Ionic.Platform.isIOS();
@@ -31,16 +40,12 @@ export default class ChatCtrl extends Controller {
       this.phones.push({text: this.contact.phoneNumbers[i].value, checked: false});
     }
 
-
-
   }
-
-
 
 
   sendFlag () {
 
-    if (this.getInterest() == this.interest) {
+    if (this.interest == this.defaultInterest) {
       return true;
     }
 
@@ -57,15 +62,8 @@ export default class ChatCtrl extends Controller {
     return this.phone ? false : true;
   };
 
-  getInterest () {
-    var result = Interest.findOne({to_id: this.contactId});
-    if (!result || !result.name) {
-      return this.interest;
-    }
-    return result.name;
-  }
+  setNotification () {
 
-  setNotification (to_id, to_name) {
     var self = this;
     this.$ionicActionSheet.show({
       buttons: [
@@ -80,21 +78,50 @@ export default class ChatCtrl extends Controller {
         // add cancel code..
       },
       buttonClicked: function (index) {
-
-        Meteor.call('interest.add', to_id, to_name, self.phone, this.buttons[index].text);
-        return true;
+          self.interest = this.buttons[index].text;
+          return true;
       }
     });
   };
 
   sendInteretsOneSms() {
+    var self = this;
     const profile = this.currentUser && this.currentUser.profile;
     this.name = profile ? profile.name : '';
-    var interetsOne = profile.name + ' проявил(а) к тебе свой интерес, зайди или скачай приложение "CheckInt"';
-    Meteor.call('twilio.sendSms', this.phone, interetsOne);
+    var interetsOne = profile.name + ' проявил(а) к  тебе свой интерес, зайди или скачай приложение "CheckInt"';
+
+    //confirm
+
+    const confirmPopup = this.$ionicPopup.confirm({
+      title: 'Number confirmation',
+      template: '<div>' + this.phone + '</div><div>Is your phone number above correct?</div>',
+      cssClass: 'text-center',
+      okText: 'Yes',
+      okType: 'button-positive button-clear',
+      cancelText: 'edit',
+      cancelType: 'button-dark button-clear'
+    });
+
+    confirmPopup.then((res) => {
+      if (!res) return;
+
+      this.$ionicLoading.show({
+        template: 'Sending verification code...'
+      });
+
+      Meteor.call('interest.add', self.contactId, self.contact.name.givenName, self.phone, self.interest, function() {
+        Meteor.call('twilio.sendSms', self.phone, interetsOne, (err) => {
+          self.$ionicLoading.hide();
+          if (err) return self.handleError(err);
+          self.$state.go('tab.groups');
+        });
+      })
+
+
+    });
 
   }
 
 }
 
-ChatCtrl.$inject = ['$stateParams', '$timeout', '$ionicModal', '$ionicActionSheet', '$ionicScrollDelegate', 'NewChat', '$ionicPopup', '$log'];
+ChatCtrl.$inject = [ '$state','$stateParams', '$ionicLoading', '$timeout', '$ionicModal', '$ionicActionSheet', '$ionicScrollDelegate', 'NewChat', '$ionicPopup', '$log'];
