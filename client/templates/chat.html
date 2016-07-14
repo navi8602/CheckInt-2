@@ -1,4 +1,4 @@
-<ion-view view-title="{{chat.contact.name.givenName}}">
+<ion-view view-title="{{chat.contact.name.formatted}}">
     <ion-nav-buttons side="primary">
         <button nav-direction="back" class="button button-clear button-icon button-positive icon ion-ios-arrow-back"
                 ng-click="historyBack()">Назад
@@ -11,14 +11,13 @@
                       style="background-color: #f4f4f4">
             </ion-item>
 
-            <div class="padding text-center">
+            <!--div class="padding text-center">
                 <p>
                     Выберите номер телефона на который хотели бы отправить интерес.
                     Вы можете указать несколько номеров для отправки.
                 </p>
-            </div>
+            </div-->
 
-            <div style="height: 25px"></div>
 
             <ion-toggle ng-repeat="item in chat.phones"
                         ng-model="item.checked"
@@ -27,12 +26,18 @@
             </ion-toggle>
 
 
+
             <div style="height: 35px"></div>
 
-            <ion-item class="item-icon-left" ng-click="chat.setNotification();">
+
+            <ion-checkbox ng-repeat="item in chat.interest" ng-model="item.checked" ng-checked="item.checked">
+                {{ item.text }}
+            </ion-checkbox>
+
+            <!--ion-item class="item-icon-left" ng-click="chat.setNotification();">
                 <i class="icon ion-ios-chatbubble-outline positive"></i>
-                {{chat.interest}}
-            </ion-item>
+
+            </ion-item-->
 
             <div class="padding text-center">
                 <a class="button button-clear button-large button-balanced " ng-click="chat.sendInteretsOneSms()" ng-disabled="chat.sendFlag()">

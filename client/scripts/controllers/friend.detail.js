@@ -8,11 +8,29 @@ export default class FriendDetail  extends Controller {
         super(...arguments);
         var self = this;
         this.contactId = this.$stateParams.contactId;
-        this.subscribe('InterestByUserId', function() {
+        
+        self.math = [];
+        
+        this.subscribe('interestSomeUserId', function() {
+
             self.item = Interest.findOne({to_id: self.contactId });
+
+            if(self.item) {
+
+                var phone = Meteor.user().phone.number;
+
+                var someSend = Interest.findOne({to_phone: phone, from_phone: self.item.to_phone});
+
+                if (someSend && someSend.name) {
+                    for (var k in someSend.name) {
+                        if (self.item.name.indexOf(someSend.name[k])) {
+                            self.math.push(someSend.name[k]);
+                            break;
+                        }
+                    }
+                }
+            }
         });
-
-
 
         this.$scope.data={visible : false};
 
@@ -20,65 +38,22 @@ export default class FriendDetail  extends Controller {
             window.history.back();
         };
 
-        this.subscribe('InterestByUserId', function() {
-            self.interest = Interest.findOne({to_id: self.contactId});
-            self.interest = self.interest && self.interest.name ? self.interest.name : self.defaultInterest;
-            console.log(self.interest);
-        });
-
-        this.contactId = this.$stateParams.contactId;
-
-        this.defaultInterest = 'Выберите интерес';
-
-        this.phone = false;
-
-        const profile = this.currentUser && this.currentUser.profile;
-        this.name = profile ? profile.name : '';
-        console.log(this.currentUser);
-
-        for (var i in this.contacts) {
-            if (this.contacts[i].id == this.contactId) {
-                this.contact = this.contacts[i];
-                break;
-            }
-        }
-        this.phones = [];
+        
+        this.interest = [
+            { text: 'Сходить за пивом', checked: self.math.indexOf('Сходить за пивом') > -1 ? true : false },
+            { text: 'Пойти в кино', checked: self.math.indexOf('Пойти в кино') > -1 ? true : false},
+            { text: 'Ловить лягушек', checked: self.math.indexOf('Ловить лягушек') > -1 ? true : false},
+            { text: 'Поехать в Тайланд', checked: self.math.indexOf('Поехать в Тайланд') > -1 ? true : false}
+        ];
     }
 
-
-    setNotification () {
-
+    showConfirmRemove() {
+        
         var self = this;
-        this.$ionicActionSheet.show({
-            buttons: [
-                { text: 'Сходить за пивом' },
-                { text: 'Пойти в кино' },
-                { text: 'Ловить лягушек' },
-                { text: 'Поехать в Тайланд' }
-            ],
-            titleText: 'Выбирите интерес для отправки контакты',
-            cancelText: 'Отмена',
-            cancel: function () {
-                // add cancel code..
-            },
-            buttonClicked: function (index) {
-                self.interest = this.buttons[index].text;
-                return true;
-            }
-        });
-    };
-
-    sendInteretsOneSms() {
-        var self = this;
-        const profile = this.currentUser && this.currentUser.profile;
-        this.name = profile ? profile.name : '';
-        var interetsOne = profile.name + ' проявил(а) к  тебе свой интерес, зайди или скачай приложение "CheckInt"';
-
-        //confirm
-
+        
         const confirmPopup = this.$ionicPopup.confirm({
             title: 'Number confirmation',
-            template: '<div>' + this.phone + '</div><div>Is your phone number above correct?</div>',
+            template: '<div>' + self.item.to_name + '</div><div>Вы действительно хотите удалить интерес к нему?</div>',
             cssClass: 'text-center',
             okText: 'Yes',
             okType: 'button-positive button-clear',
@@ -90,22 +65,18 @@ export default class FriendDetail  extends Controller {
             if (!res) return;
 
             this.$ionicLoading.show({
-                template: 'Sending verification code...'
+                template: 'Удаление'
             });
 
-            Meteor.call('interest.add', self.contactId, self.contact.name.givenName, self.phone, self.interest, function() {
-                Meteor.call('twilio.sendSms', self.phone, interetsOne, (err) => {
-                    self.$ionicLoading.hide();
-                    if (err) return self.handleError(err);
-                    self.$state.go('tab.groups');
-                });
+            Meteor.call('interest.remove', self.item._id, function(err) {
+                self.$ionicLoading.hide();
+                if (err) return self.handleError(err);
+                self.$state.go('tab.groups');
             })
 
 
         });
-
     }
-
 }
 
 FriendDetail.$inject = [ '$state','$stateParams', '$ionicLoading', '$timeout', '$ionicModal', '$ionicActionSheet', '$ionicScrollDelegate', 'NewChat', '$ionicPopup', '$log'];

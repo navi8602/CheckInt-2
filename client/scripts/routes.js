@@ -27,7 +27,12 @@ class RoutesConfig extends Config {
         views: {
           'tab-chats': {
             templateUrl: 'client/templates/chats.html',
-            controller: 'ChatsCtrl as chats'
+            controller: 'ChatsCtrl as chats',
+            resolve: {
+              interestByUserId() {
+                return Meteor.subscribe('interestByUserId');
+              }
+            }
           }
         }
       })
@@ -49,7 +54,7 @@ class RoutesConfig extends Config {
             controller: 'InterestFriend as friend',
             resolve: {
               interestByUserId() {
-                return Meteor.subscribe('interestByUserId');
+                return Meteor.subscribe('interestSomeUserId');
               }
             }
           }
@@ -62,7 +67,7 @@ class RoutesConfig extends Config {
         controller: 'FriendDetail as friends',
         resolve: {
           interestByUserId() {
-            return Meteor.subscribe('interestByUserId');
+            return Meteor.subscribe('interestSomeUserId');
           }
         }
       })
@@ -83,15 +88,6 @@ class RoutesConfig extends Config {
         resolve: {
           user: this.isAuthorized
         }
-      })
-      .state('sign-up-photo', {
-        url: '/sign-up-photo',
-        templateUrl: 'client/templates/sign-up-photo.html',
-        controller: 'SignUpPhoto as profile'
-      })
-      .state('sign-up-success', {
-        url: '/sign-up-success',
-        templateUrl: 'client/templates/sign-up-success.html'
       })
       .state('tab.settings', {
         url: '/settings',

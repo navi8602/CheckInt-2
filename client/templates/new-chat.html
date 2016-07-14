@@ -10,7 +10,7 @@
   <div class="list">
       <label ng-repeat="contact in chat.contacts track by $index">
           <a class="item item-avatar"  ui-sref="cantactDetail">
-              <h2>{{contact.name.givenName}}</h2>
+              <h2>{{contact.name.formatted}}</h2>
               <label ng-repeat="number in contact.phoneNumbers track by $index">
                   <p>{{number.value}}</p>
               </label>
@@ -22,7 +22,7 @@
   </div>
    <div class="list">
       <a ng-repeat="contact in chat.contacts track by $index" class="item">
-        <h2>{{contact.name.givenName}}</h2>
+        <h2>{{contact.name.formatted}}</h2>
         <p>
           Hey there! I am using meteor-Whatsapp with meteor.
         </p>

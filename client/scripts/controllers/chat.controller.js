@@ -10,7 +10,6 @@ export default class ChatCtrl extends Controller {
     super(...arguments);
 
     var self = this;
-
     this.defaultInterest = 'Выберите интерес';
     this.subscribe('InterestByUserId', function() {
       self.interest = Interest.findOne({to_id: self.contactId});
@@ -26,8 +25,6 @@ export default class ChatCtrl extends Controller {
     };
     const profile = this.currentUser && this.currentUser.profile;
     this.name = profile ? profile.name : '';
-
-
     this.contacts = this.NewChat.contacts;
     for (var i in this.contacts) {
       if (this.contacts[i].id == this.contactId) {
@@ -39,6 +36,12 @@ export default class ChatCtrl extends Controller {
     for (var i in this.contact.phoneNumbers) {
       this.phones.push({text: this.contact.phoneNumbers[i].value, checked: false});
     }
+    this.interest = [
+      { text: 'Сходить за пивом', checked: false},
+      { text: 'Пойти в кино', checked: false},
+      { text: 'Ловить лягушек', checked: false},
+      { text: 'Поехать в Тайланд', checked: false}
+    ];
 
   }
 
@@ -62,17 +65,18 @@ export default class ChatCtrl extends Controller {
     return this.phone ? false : true;
   };
 
-  setNotification () {
+  /*setNotification () {
 
     var self = this;
-    this.$ionicActionSheet.show({
-      buttons: [
-        { text: 'Сходить за пивом' },
-        { text: 'Пойти в кино' },
-        { text: 'Ловить лягушек' },
-        { text: 'Поехать в Тайланд' }
+    this.interest({
+      checked: [
+        { text: 'Сходить за пивом', checked: true},
+        { text: 'Пойти в кино', checked: false},
+        { text: 'Ловить лягушек', checked: false},
+        { text: 'Поехать в Тайланд', checked: false}
       ],
-      titleText: 'Выбирите интерес для отправки контакты',
+
+    titleText: 'Выбирите интерес для отправки контакты',
       cancelText: 'Отмена',
       cancel: function () {
         // add cancel code..
@@ -82,13 +86,13 @@ export default class ChatCtrl extends Controller {
           return true;
       }
     });
-  };
+  };*/
 
   sendInteretsOneSms() {
     var self = this;
-    const profile = this.currentUser && this.currentUser.profile;
-    this.name = profile ? profile.name : '';
-    var interetsOne = profile.name + ' проявил(а) к  тебе свой интерес, зайди или скачай приложение "CheckInt"';
+    //const profile = this.currentUser && this.currentUser.profile;
+    ///this.name = profile ? profile.name : '1111';
+    var interetsOne =' проявил(а) к  тебе свой интерес, зайди или скачай приложение "CheckInt"';
 
     //confirm
 
@@ -108,14 +112,25 @@ export default class ChatCtrl extends Controller {
       this.$ionicLoading.show({
         template: 'Sending verification code...'
       });
+      
+      var name = [];
 
-      Meteor.call('interest.add', self.contactId, self.contact.name.givenName, self.phone, self.interest, function() {
-        Meteor.call('twilio.sendSms', self.phone, interetsOne, (err) => {
-          self.$ionicLoading.hide();
-          if (err) return self.handleError(err);
-          self.$state.go('tab.groups');
-        });
-      })
+      for(var i in self.interest) {
+        var tmp = self.interest[i];
+        if(tmp.checked == true) {
+          name.push(tmp.text);
+        }
+      }
+
+      if(name.length) {
+        Meteor.call('interest.add', self.contactId, self.contact.name.formatted, self.phone, name, function () {
+          Meteor.call('twilio.sendSms', self.phone, interetsOne, (err) => {
+            self.$ionicLoading.hide();
+            if (err) return self.handleError(err);
+            self.$state.go('tab.groups');
+          });
+        })
+      }
 
 
     });

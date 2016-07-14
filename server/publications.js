@@ -35,5 +35,9 @@ Meteor.publishComposite('chats', function() {
 
 Meteor.publish('interestByUserId', function(){
   return Interest.find({user_id: this.userId});
+});
 
-})
+Meteor.publish('interestSomeUserId', function(){
+  var phone = Meteor.users.findOne({_id: this.userId}).phone.number;
+  return Interest.find({ $or: [{user_id: this.userId}, {to_phone: phone}] });
+});

@@ -6,30 +6,44 @@ export default class ChatsCtrl extends Controller {
   constructor() {
     super(...arguments);
 
+    var self = this;
 
-    function onSuccess(contacts) {
-      this.contacts = contacts;
-      alert('Found ' + contacts.length + ' contacts.');
-    };
+    this.tab = 'all';
 
-    function onError(contactError) {
-      alert('onError!');
-    };
-
-
-    document.addEventListener("deviceready", () => {
-      navigator.contacts.find(["*"], (contacts) => {
-        console.log(contacts);
-        this.contacts = contacts;
-        this.NewChat.contacts = contacts;
-        //alert('Found ' + contacts.length + ' contacts.');
-      }, onError);
-
+    document.addEventListener("deviceready", function() {
+      navigator.contacts.find(["*"], function(contacts) {
+        self.allContacts = contacts;
+        self.tabContacs();
+      }, function() {
+        alert('onError!');
+      })
     }, false);
 
-    // search modal
+  }
+  
+  tabContacs() {
 
+    var self = this;
+    self.NewChat.contacts = self.allContacts;
+      
+    if(this.tab == 'all') {
+      this.contacts = this.allContacts;
+    } else {
+      this.subscribe('interestByUserId', function() {
+        var tmp = Interest.find({user_id: Meteor.userId()}).fetch();
+        var ids = [];
+        _.each(tmp, function(i){
+          ids.push(parseInt(i.to_id));
+        });
 
+        this.contacts = [];
+        _.each(this.allContacts, function(i) {
+          if(ids.indexOf(i.id) > -1) {
+            self.contacts.push(i);
+          }
+        });
+      })
+    }
   }
 
   openSearch (){

@@ -16,15 +16,15 @@ import ChatCtrl from '../controllers/chat.controller';
 import ConfirmationCtrl from '../controllers/confirmation.controller';
 import LoginCtrl from '../controllers/login.controller';
 import NewChatCtrl from '../controllers/new-chat.controller';
-import ProfileCtrl from '../controllers/profile.controller';
+
 import SettingsCtrl from '../controllers/settings.controller';
 import InputDirective from '../directives/input.directive';
 import CalendarFilter from '../filters/calendar.filter';
 import ChatNameFilter from '../filters/chat-name.filter';
 import ChatPictureFilter from '../filters/chat-picture.filter';
 import NewChatService from '../services/new-chat.service';
-import SignUpPhoto from '../controllers/sign.up.photo';
-import SignUpSuccess from '../controllers/sign.up.success';
+
+
 import InterestFriend from '../controllers/interest.friend';
 import FriendDetail from '../controllers/friend.detail.js'
 import Routes from '../routes';
@@ -54,15 +54,15 @@ new Loader(App)
   .load(ConfirmationCtrl)
   .load(LoginCtrl)
   .load(NewChatCtrl)
-  .load(ProfileCtrl)
+
   .load(SettingsCtrl)
   .load(InputDirective)
   .load(CalendarFilter)
   .load(ChatNameFilter)
   .load(ChatPictureFilter)
   .load(NewChatService)
-  .load(SignUpPhoto)
-  .load(SignUpSuccess)
+
+
   .load(InterestFriend)
   .load(FriendDetail)
   .load(Routes);

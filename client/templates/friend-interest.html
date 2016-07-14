@@ -19,33 +19,26 @@
 
             <ion-item class="item-icon-left" ng-show="friends.currentUser.phone.number == friends.currentUser.phone.number">
                 <i class="icon ion-ios-chatbubble-outline positive"></i>
-                {{friends.currentUser.phone.number}}
+                {{friends.item.to_phone}}
             </ion-item>
 
             <div style="height: 35px"></div>
 
-            <div class="padding text-center" >
+            <!--div class="padding text-center" >
                 <p>
                     Узнай сходятся ли ваши интересы с "{{friends.item.to_name}}".
                     Для этого выбери и отравь свой интерес.
                 </p>
-            </div>
+            </div-->
 
-            <ion-item class="item-icon-left" ng-click="friends.setNotification();">
-                <i class="icon ion-ios-chatbubble-outline positive"></i>
-                {{friends.interest}}
-            </ion-item>
-
-            <div class="padding text-center">
-                <a class="button button-clear button-large button-balanced " ng-click="friends.sendInteretsOneSms()" ng-disabled="friends.sendFlag()">
-                    Отправить
-                </a>
-            </div>
+            <ion-checkbox  ng-repeat="item in friends.interest"  ng-model="item.checked" ng-checked="item.checked"  ng-disabled="true">
+                    {{ item.text }}
+            </ion-checkbox>
 
             <div style="height: 35px"></div>
 
-            <ion-item class="assertive" ng-click="showConfirmRemove();">
-                Remove from Group
+            <ion-item class="assertive" ng-click="friends.showConfirmRemove();">
+                Удалить запрос
             </ion-item>
 
             <div style="height: 35px"></div>
