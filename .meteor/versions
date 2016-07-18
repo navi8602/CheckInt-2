@@ -7,9 +7,9 @@ aldeed:simple-schema@1.5.3
 allow-deny@1.0.5
 angular-templates@1.0.3
 angular-templates-runtime@0.0.1
-angular:angular@1.5.3_1
-angular:angular-animate@1.5.3_1
-angular:angular-sanitize@1.5.3_1
+angular:angular@1.4.8
+angular:angular-animate@1.4.8
+angular:angular-sanitize@1.4.8
 angularui:angular-ui-router@0.2.15
 autoupdate@1.2.11
 babel-compiler@6.8.4

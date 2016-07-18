@@ -1,8 +1,8 @@
 import { _ } from 'meteor/underscore';
 import { Accounts } from 'meteor/accounts-base';
-import { Controller } from 'angular-ecmascript/module-helpers';
+import { Controller } from "angular-ecmascript/module-helpers";
 
-export default class LoginCtrl extends Controller {
+export default class SignIn extends Controller {
 constructor() {
     super(...arguments);
 
@@ -47,4 +47,4 @@ constructor() {
   }
 }
 
-LoginCtrl.$inject = ['$state', '$ionicLoading', '$ionicPopup', '$log'];
+SignIn.$inject = ['$state', '$ionicLoading', '$ionicPopup', '$log'];

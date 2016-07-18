@@ -1,9 +1,9 @@
 {
-  "name": "whatsapp",
+  "name": "CheckInt",
   "private": true,
   "main": "mobile-config.js",
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor run ios-device --mobile-server http://46.101.103.94"
   },
   "dependencies": {
     "angular": "^1.5.7",

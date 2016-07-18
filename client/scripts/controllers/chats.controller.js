@@ -10,9 +10,13 @@ export default class ChatsCtrl extends Controller {
 
     this.tab = 'all';
 
+    this.$ionicLoading.show({
+      template: 'Загрузка контактов'
+    });
     document.addEventListener("deviceready", function() {
       navigator.contacts.find(["*"], function(contacts) {
         self.allContacts = contacts;
+        self.$ionicLoading.hide();
         self.tabContacs();
       }, function() {
         alert('onError!');

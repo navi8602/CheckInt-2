@@ -12,8 +12,15 @@ Meteor.methods({
     'twilio.sendSms': function(to, body){
 
         try {
+
+            let phone = to.replace(/[^+0-9.]/g, '');
+
+            if(phone[0] == '8' && phone.length == 11) {
+                phone = '+7'+phone.substring(1);
+            }
+
             var result = twilioClient.sendSMS({
-                to: to,
+                to: phone,
                 body: body
             });
         } catch (err) {

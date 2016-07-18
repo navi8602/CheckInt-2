@@ -8,11 +8,11 @@ export default class InterestFriend  extends Controller {
         super(...arguments);
         var self = this;
         this.subscribe('interestSomeUserId', function() {
-            
+
             self.list = [];
-            
+
             var mySend = Interest.find({user_id: Meteor.userId()}).fetch();
-            
+
             var users_phone = [];
             var inter = {};
             var info = {};
@@ -22,15 +22,15 @@ export default class InterestFriend  extends Controller {
                 inter[i.to_phone] = i.name;
                 info[i.to_phone] = i;
             });
-            
-            
+
+
             var phone = Meteor.user().phone.number;
 
             var someSend = Interest.find({to_phone: phone, from_phone: { $in: users_phone }}).fetch();
 
             _.each(someSend, function(i){
                 for(var k in i.name) {
-                    if(inter[i.from_phone].indexOf(i.name[k])) {
+                    if(inter[i.from_phone].indexOf(i.name[k]) > -1) {
                         self.list.push(info[i.from_phone]);
                         break;
                     }

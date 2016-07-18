@@ -14,7 +14,7 @@ import { Meteor } from 'meteor/meteor';
 import ChatsCtrl from '../controllers/chats.controller';
 import ChatCtrl from '../controllers/chat.controller';
 import ConfirmationCtrl from '../controllers/confirmation.controller';
-import LoginCtrl from '../controllers/login.controller';
+import SignIn from '../controllers/login.controller';
 import NewChatCtrl from '../controllers/new-chat.controller';
 
 import SettingsCtrl from '../controllers/settings.controller';
@@ -49,25 +49,20 @@ Angular.module(App, [
 });
 
 new Loader(App)
-  .load(ChatsCtrl)
-  .load(ChatCtrl)
-  .load(ConfirmationCtrl)
-  .load(LoginCtrl)
-  .load(NewChatCtrl)
-
-  .load(SettingsCtrl)
-  .load(InputDirective)
-  .load(CalendarFilter)
-  .load(ChatNameFilter)
-  .load(ChatPictureFilter)
-  .load(NewChatService)
-
-
-  .load(InterestFriend)
-  .load(FriendDetail)
-  .load(Routes);
-
-
+    .load(ChatsCtrl)
+    .load(ChatCtrl)
+    .load(ConfirmationCtrl)
+    .load(SignIn)
+    .load(NewChatCtrl)
+    .load(SettingsCtrl)
+    .load(InputDirective)
+    .load(CalendarFilter)
+    .load(ChatNameFilter)
+    .load(ChatPictureFilter)
+    .load(NewChatService)
+    .load(InterestFriend)
+    .load(FriendDetail)
+    .load(Routes);
 //
 
 
@@ -82,4 +77,15 @@ else {
 
 function onReady() {
   Angular.bootstrap(document, [App]);
+}
+
+
+function fixPhone(data) {
+  let phone = data.replace(/[^+0-9.]/g, '');
+
+  if(phone[0] == '8' && phone.length == 11) {
+    phone = '+7'+phone.substring(1);
+  }
+
+  return phone;
 }

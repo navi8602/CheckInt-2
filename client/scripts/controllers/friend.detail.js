@@ -8,27 +8,35 @@ export default class FriendDetail  extends Controller {
         super(...arguments);
         var self = this;
         this.contactId = this.$stateParams.contactId;
-        
-        self.math = [];
-        
+
+        this.math = [];
+
         this.subscribe('interestSomeUserId', function() {
 
-            self.item = Interest.findOne({to_id: self.contactId });
+            this.math = [];
 
-            if(self.item) {
+            this.item = Interest.findOne({to_id: self.contactId });
+
+            if(this.item) {
 
                 var phone = Meteor.user().phone.number;
 
-                var someSend = Interest.findOne({to_phone: phone, from_phone: self.item.to_phone});
+                var someSend = Interest.findOne({to_phone: phone, from_phone: this.item.to_phone});
 
                 if (someSend && someSend.name) {
                     for (var k in someSend.name) {
-                        if (self.item.name.indexOf(someSend.name[k])) {
+                        if (self.item.name.indexOf(someSend.name[k]) > -1) {
                             self.math.push(someSend.name[k]);
-                            break;
                         }
                     }
                 }
+
+                this.interest = [
+                    { text: 'Сходить за пивом', checked: self.math.indexOf('Сходить за пивом') > -1 ? true : false },
+                    { text: 'Пойти в кино', checked: self.math.indexOf('Пойти в кино') > -1 ? true : false},
+                    { text: 'Ловить лягушек', checked: self.math.indexOf('Ловить лягушек') > -1 ? true : false},
+                    { text: 'Поехать в Тайланд', checked: self.math.indexOf('Поехать в Тайланд') > -1 ? true : false}
+                ];
             }
         });
 
@@ -38,7 +46,6 @@ export default class FriendDetail  extends Controller {
             window.history.back();
         };
 
-        
         this.interest = [
             { text: 'Сходить за пивом', checked: self.math.indexOf('Сходить за пивом') > -1 ? true : false },
             { text: 'Пойти в кино', checked: self.math.indexOf('Пойти в кино') > -1 ? true : false},
@@ -48,9 +55,9 @@ export default class FriendDetail  extends Controller {
     }
 
     showConfirmRemove() {
-        
+
         var self = this;
-        
+
         const confirmPopup = this.$ionicPopup.confirm({
             title: 'Number confirmation',
             template: '<div>' + self.item.to_name + '</div><div>Вы действительно хотите удалить интерес к нему?</div>',
