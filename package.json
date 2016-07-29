@@ -3,7 +3,7 @@
   "private": true,
   "main": "mobile-config.js",
   "scripts": {
-    "start": "meteor run ios-device --mobile-server http://46.101.103.94"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "angular": "^1.5.7",

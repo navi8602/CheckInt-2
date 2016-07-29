@@ -15,12 +15,11 @@ export default class InterestFriend  extends Controller {
 
             var users_phone = [];
             var inter = {};
-            var info = {};
 
             _.each(mySend, function(i){
                 users_phone.push(i.to_phone);
                 inter[i.to_phone] = i.name;
-                info[i.to_phone] = i;
+                self.list.push(i);
             });
 
 
@@ -31,7 +30,12 @@ export default class InterestFriend  extends Controller {
             _.each(someSend, function(i){
                 for(var k in i.name) {
                     if(inter[i.from_phone].indexOf(i.name[k]) > -1) {
-                        self.list.push(info[i.from_phone]);
+                        _.each(self.list, function(l){
+                            if(l.to_phone == i.from_phone) {
+                                l.math = true;
+                            }
+                        });
+                        //self.list.push(info[i.from_phone]);
                         break;
                     }
                 }

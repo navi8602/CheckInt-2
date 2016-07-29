@@ -1,22 +1,22 @@
 <ion-view hide-nav-bar="true">
     <ion-content class="padding text-center">
+
+        <div style="height:85px"></div>
+
+        <p style="font-size: 22px">Введите пин-код</p>
+
         <div style="height: 25px"></div>
-        <h2>We have sent you an SMS with a code to the number {{ confirmation.phone }} above</h2>
-        <p>To complete your phone number verification CheckInt, please enter the 4-digit activation code.</p>
-        <div style="height: 50px"></div>
+
+        <p>Введите sms-код который вы получили в SMS на номер телефона {{ confirmation.phone }} </p>
+
+        <div style="height: 25px"></div>
         <ion-list class="border-none">
             <ion-item class="item-input border-bottom">
-                <input ng-model="confirmation.code" on-return="confirmation.confirm()" type="tel" placeholder="Code">
+                <input ng-model="confirmation.code" on-return="confirmation.confirm()" type="tel" placeholder="XXXX">
             </ion-item>
         </ion-list>
-        <div  class="padding">
-            <a ng-click="confirmation.confirm()" on-touch="onTouch()" ng-disabled="!confirmation.code || confirmation.code.length === 0" class="button button-clear">
-                Submit
-            </a>
-        </div>
     </ion-content>
-
-    <ion-footer-bar>
-        <a class="button button-clear" href="#/login">Remembered password</a>
+    <ion-footer-bar class="footer-btn">
+        <button class="button button-positive" ng-click="confirmation.confirm()" on-touch="onTouch()" ng-disabled="!confirmation.code || confirmation.code.length === 0">Подтвердить<i class="ion-android-arrow-forward"></i></button>
     </ion-footer-bar>
 </ion-view>

@@ -37,7 +37,21 @@ Angular.module(App, [
   'angular-meteor.auth',
   'angularMoment',
   'ionic'
-]).run(function() {
+]).run(function($timeout, $ionicHistory ,$ionicPlatform, $rootScope,$ionicLoading) {
+  
+
+
+  $rootScope.hideSplash = function() {
+    $ionicPlatform.ready(function() {
+      $timeout(function() {
+        if (navigator.splashscreen)
+          navigator.splashscreen.hide();
+      }, 1000);
+    })
+  };
+
+  
+  
   if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
     cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     cordova.plugins.Keyboard.disableScroll(true);
@@ -46,6 +60,8 @@ Angular.module(App, [
     // org.apache.cordova.statusbar required
     StatusBar.styleLightContent();
   }
+  
+  
 });
 
 new Loader(App)
@@ -68,15 +84,19 @@ new Loader(App)
 
 
 // Startup
-if (Meteor.isCordova) {
-  Angular.element(document).on('deviceready', onReady);
-}
-else {
-  Angular.element(document).ready(onReady);
-}
 
-function onReady() {
-  Angular.bootstrap(document, [App]);
+if (Meteor.isClient) {
+
+  function onReady() {
+    angular.bootstrap(document, [App]);
+  }
+
+  if (Meteor.isCordova) {
+    angular.element(document).on("deviceready", onReady);
+  }
+  else {
+    angular.element(document).ready(onReady);
+  }
 }
 
 

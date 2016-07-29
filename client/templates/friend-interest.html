@@ -1,47 +1,78 @@
 <ion-view view-title="Contact">
-    <ion-nav-buttons side="primary">
-        <button nav-direction="back" class="button button-clear button-icon button-positive icon ion-ios-arrow-back" ng-click="historyBack()">
-            Назад
+
+    <ion-header-bar align-title="center" style="background: #FA7470">
+        <button style="color: #ffffff" nav-direction="back" class="button button-clear button-icon button-positive icon ion-ios-arrow-back"
+                ng-click="historyBack()">Назад
         </button>
-    </ion-nav-buttons>
+        <h1 style="color: #ffffff" class="title">CheckInt</h1>
+
+    </ion-header-bar>
 
     <ion-content id="group-setting">
         <ion-list>
-            <ion-item  class="item-avatar item-avatar-center item-avatar-xl text-center">
-                <img ng-src="/user-default.svg">
-
+            <div  ng-show="!friends.mathFlag" class="text-center">
                 <h2>
                     <small>{{friends.item.to_name}}</small>
                 </h2>
 
                 <p>{{friends.item.status}}</p>
-            </ion-item>
+            </div>
 
-            <ion-item class="item-icon-left" ng-show="friends.currentUser.phone.number == friends.currentUser.phone.number">
+            <ion-item class="item-icon-left" ng-show="friends.currentUser.phone.number == friends.currentUser.phone.number && !friends.mathFlag">
                 <i class="icon ion-ios-chatbubble-outline positive"></i>
                 {{friends.item.to_phone}}
             </ion-item>
 
+            <img ng-show="friends.mathFlag" style="margin-top: 20px; margin-left: 110px;" width="90px" ng-src="/star.svg">
+            <img ng-show="!friends.mathFlag" style="margin-top: 20px; margin-left: 110px;" width="90px" ng-src="/user-default.svg">
+
+
+            <h1 ng-show="friends.mathFlag" style="text-align: center; color: #FA7470">Совпадение!</h1>
+
+            <div ng-show="friends.mathFlag" class="padding text-center" >
+                <p>ваши интересы совпали с </p>
+                <h2 style="text-align: center; color: #FA7470">
+                    <small>{{friends.item.to_name}}</small>
+                </h2>
+            </div>
+
+            <div class="int-checks" ng-show="friends.mathFlag">
+                <div class="row">
+                    <div class="col col-50" ng-repeat="item in friends.interest" >
+                        <div class="btn-check" ng-show="item.checked">
+                            <input ng-model="item.checked" ng-disabled="true" ng-checked="item.checked" type="checkbox" name="group-int" id="inte1{{$index}}_{{friends.contactId}}" />
+                            <label for="inte1{{$index}}_{{friends.contactId}}">{{ item.text }}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="int-checks" ng-show="!friends.mathFlag">
+                <div class="row">
+                    <div class="col col-50" ng-repeat="item in friends.interest" >
+                        <div class="btn-check">
+                            <input ng-model="item.checked" ng-checked="item.checked" type="checkbox" name="group-int" id="inte2{{$index}}_{{friends.contactId}}" />
+                            <label for="inte2{{$index}}_{{friends.contactId}}">{{ item.text }}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div style="height: 35px"></div>
 
-            <!--div class="padding text-center" >
-                <p>
-                    Узнай сходятся ли ваши интересы с "{{friends.item.to_name}}".
-                    Для этого выбери и отравь свой интерес.
-                </p>
-            </div-->
+            <ion-item class="positive" ng-click="friends.sendInteretsOneSms();" ng-show="!friends.mathFlag">
+                Отправить снова
+            </ion-item>
 
-            <ion-checkbox  ng-repeat="item in friends.interest"  ng-model="item.checked" ng-checked="item.checked"  ng-disabled="true">
-                    {{ item.text }}
-            </ion-checkbox>
-
-            <div style="height: 35px"></div>
-
-            <ion-item class="assertive" ng-click="friends.showConfirmRemove();">
+            <ion-item ng-show="!friends.mathFlag" ng-click="friends.showConfirmRemove();" class="assertive">
                 Удалить запрос
             </ion-item>
 
             <div style="height: 35px"></div>
         </ion-list>
     </ion-content>
+    <ion-footer-bar ng-show="friends.mathFlag" class="footer-btn">
+        <button ng-show="friends.mathFlag" class="button button-stable"   ng-click="friends.showConfirmRemove();">Удалить совпадения<i class="ion-trash-a"></i></button>
+        <button ng-show="!friends.mathFlag" class="button button-assertive"   ng-click="friends.showConfirmRemove();">Удалить запрос<i class="ion-trash-a"></i></button>
+    </ion-footer-bar>
 </ion-view>

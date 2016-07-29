@@ -12,12 +12,12 @@ constructor() {
     if (_.isEmpty(this.phone)) return;
 
     const confirmPopup = this.$ionicPopup.confirm({
-      title: 'Number confirmation',
-      template: '<div>' + this.phone + '</div><div>Is your phone number above correct?</div>',
+      title: 'Авторизация',
+      template: '<div>Правильно ли указан номер телефона?</div><div>' + this.phone + '</div>',
       cssClass: 'text-center',
-      okText: 'Yes',
+      okText: 'Да',
       okType: 'button-positive button-clear',
-      cancelText: 'edit',
+      cancelText: 'Исправить',
       cancelType: 'button-dark button-clear'
     });
 
@@ -25,7 +25,7 @@ constructor() {
       if (!res) return;
 
       this.$ionicLoading.show({
-        template: 'Sending verification code...'
+        template: 'Отправка кода...'
       });
 
       Accounts.requestPhoneVerification(this.phone, (err) => {
@@ -40,8 +40,8 @@ constructor() {
     this.$log.error('Login error ', err);
 
     this.$ionicPopup.alert({
-      title: err.reason || 'Login failed',
-      template: 'Please try again',
+      title: err.reason || 'Ошибка в наборе номера',
+      template: 'Попробуйте снова',
       okType: 'button-positive button-clear'
     });
   }

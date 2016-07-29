@@ -1,25 +1,23 @@
 <ion-view hide-nav-bar="true">
     <ion-content class="padding text-center">
+        <div style="height:85px"></div>
+
+        <p style="font-size: 22px">Авторизация</p>
+
         <div style="height: 25px"></div>
 
-
-        <img src="/img/logo.svg" style="width: 65px; height: auto">
-
-        <h2>Welcome to CheckInt</h2>
+        <p>Введите номер телефона и вы получите SMS уведомление с кодом подтверждения</p>
 
         <div style="height: 25px"></div>
 
         <ion-list class="border-none">
             <ion-item class="item-input border-bottom">
-                <input ng-model="logger.phone"  on-return="logger.login()" type="tel" placeholder="Your phone number">
+                <input autocomplete="off" autocorrect="off" mask="+9 (999) 999-99-99" ng-model="logger.phone"  on-return="logger.login()" type="tel" placeholder="Введите номер">
             </ion-item>
         </ion-list>
-        <div class="padding">
-            <a class="button button-clear button-large" ng-click="logger.login()" ng-disabled="!logger.phone || logger.phone.length === 0">
-                Continue
-            </a>
-        </div>
         <div style="height: 10px"></div>
-        <p>By continuing, you are indicate that you agree to the <a href="#" class="positive">Privacy Policy</a>and<a href="#" class="positive">Terms</a>.</p>
     </ion-content>
+    <ion-footer-bar class="footer-btn">
+        <button class="button button-positive" ng-click="logger.login()" ng-disabled="!logger.phone || logger.phone.length === 0">Получить код<i class="ion-android-arrow-forward"></i></button>
+    </ion-footer-bar>
 </ion-view>

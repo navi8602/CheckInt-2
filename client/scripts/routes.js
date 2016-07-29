@@ -11,6 +11,22 @@ class RoutesConfig extends Config {
 
   configure() {
     this.$stateProvider
+      .state('splash', {
+        url: '/splash',
+        templateUrl: 'client/templates/splash.ng.html',
+      })
+      .state('tutor-1', {
+        url: '/tutor-1',
+        templateUrl: 'client/templates/tutor-1.ng.html'
+      })
+      .state('tutor-2', {
+        url: '/tutor-2',
+        templateUrl: 'client/templates/tutor-2.ng.html'
+      })
+      .state('inter-ok', {
+          url: '/inter-ok',
+          templateUrl: 'client/templates/inter-ok.ng.html'
+        })
       .state('tab', {
         url: '/tab',
         abstract: true,
@@ -115,7 +131,7 @@ class RoutesRunner extends Runner {
       const err = _.last(args);
 
       if (err === 'AUTH_REQUIRED') {
-        this.$state.go('login');
+        this.$state.go('splash');
       }
     });
   }

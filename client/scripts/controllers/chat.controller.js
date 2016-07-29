@@ -12,14 +12,12 @@ export default class ChatCtrl extends Controller {
     this.inter = [];
     this.subscribe('InterestByUserId', function() {
       this.inter = Interest.findOne({to_id: this.$stateParams.contactId});
-      console.log(this.$stateParams.contactId, this.inter);
       this.inter = this.inter && this.inter.name ? this.inter.name : [];
-      console.log(this.inter);
       this.interest = [
-        { text: 'Сходить за пивом', checked: this.inter.indexOf('Сходить за пивом') > -1 ? true : false},
-        { text: 'Пойти в кино', checked: this.inter.indexOf('Пойти в кино') > -1 ? true : false},
-        { text: 'Ловить лягушек', checked: this.inter.indexOf('Ловить лягушек') > -1 ? true : false},
-        { text: 'Поехать в Тайланд', checked: this.inter.indexOf('Поехать в Тайланд') > -1 ? true : false}
+        { text: 'Встреча', id: 'int1', checked: this.inter.indexOf('Встреча') > -1 ? true : false},
+        { text: 'Дружба', id: 'int2', checked: this.inter.indexOf('Дружба') > -1 ? true : false},
+        { text: 'Флирт', id: 'int3', checked: this.inter.indexOf('Флирт') > -1 ? true : false},
+        { text: 'Любовь', id: 'int4', checked: this.inter.indexOf('Любовь') > -1 ? true : false}
       ];
     });
     this.phone = false;
@@ -72,45 +70,22 @@ export default class ChatCtrl extends Controller {
 
     return this.phone ? false : true;
   };
-
-  /*setNotification () {
-
-   var self = this;
-   this.interest({
-   checked: [
-   { text: 'Сходить за пивом', checked: true},
-   { text: 'Пойти в кино', checked: false},
-   { text: 'Ловить лягушек', checked: false},
-   { text: 'Поехать в Тайланд', checked: false}
-   ],
-
-   titleText: 'Выбирите интерес для отправки контакты',
-   cancelText: 'Отмена',
-   cancel: function () {
-   // add cancel code..
-   },
-   buttonClicked: function (index) {
-   self.interest = this.buttons[index].text;
-   return true;
-   }
-   });
-   };*/
-
+  
   sendInteretsOneSms() {
     var self = this;
     //const profile = this.currentUser && this.currentUser.profile;
     ///this.name = profile ? profile.name : '1111';
-    var interetsOne =' проявил(а) к  тебе свой интерес, зайди или скачай приложение "CheckInt"';
+    //var interetsOne =' проявил(а) к  тебе свой интерес, зайди или скачай приложение "CheckInt"';
 
     //confirm
 
-    const confirmPopup = this.$ionicPopup.confirm({
-      title: 'Number confirmation',
-      template: '<div>' + this.phone + '</div><div>Is your phone number above correct?</div>',
+   const confirmPopup = this.$ionicPopup.confirm({
+      title: 'Отправка интереса',
+      template: '<div>Отправить интерес на номер?</div><div>' + this.phone + '</div>',
       cssClass: 'text-center',
-      okText: 'Yes',
+      okText: 'Да',
       okType: 'button-positive button-clear',
-      cancelText: 'edit',
+      cancelText: 'Нет',
       cancelType: 'button-dark button-clear'
     });
 
@@ -118,7 +93,7 @@ export default class ChatCtrl extends Controller {
       if (!res) return;
 
       this.$ionicLoading.show({
-        template: 'Sending verification code...'
+        template: 'Отправка интереса...'
       });
 
       var name = [];
@@ -131,12 +106,10 @@ export default class ChatCtrl extends Controller {
       }
 
       if(name.length) {
-        Meteor.call('interest.add', self.contactId, self.contact.name.formatted, self.phone, name, function () {
-          Meteor.call('twilio.sendSms', self.phone, interetsOne, (err) => {
+        Meteor.call('interest.add', self.contactId, self.contact.name.formatted, self.phone, name, function (err) {
             self.$ionicLoading.hide();
             if (err) return self.handleError(err);
-            self.$state.go('tab.groups');
-          });
+            self.$state.go('inter-ok');
         })
       }
 

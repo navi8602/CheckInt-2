@@ -10,7 +10,7 @@ SMS.twilio = {FROM: '+18048854059', ACCOUNT_SID: 'AC1e4631d96bd3a5e3ea7e7db71cd6
 SMS.phoneTemplates = {                                                                                              // 84
     from: '+18048854059',                                                                                          // 85
     text: function (user, code) {                                                                                   // 86
-        return 'Welcome your invitation code is: ' + code;                                                          // 87
+        return 'SMS-код для регистрации в приложении CheckInt: ' + code;                                            // 87
     }                                                                                                               // 88
 };  
 

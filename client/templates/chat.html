@@ -1,22 +1,19 @@
-<ion-view view-title="{{chat.contact.name.formatted}}">
-    <ion-nav-buttons side="primary">
-        <button nav-direction="back" class="button button-clear button-icon button-positive icon ion-ios-arrow-back"
+<ion-view>
+
+    <ion-header-bar align-title="center" style="background: #FA7470">
+        <button style="color: #ffffff" nav-direction="back" class="button button-clear button-icon button-positive icon ion-ios-arrow-back"
                 ng-click="historyBack()">Назад
         </button>
-    </ion-nav-buttons>
+        <h1 style="color: #ffffff" class="title">Отправить интерес</h1>
+
+    </ion-header-bar>
 
     <ion-content  style="background-color: #f4f4f4">
         <ion-list>
-            <ion-item class="item-avatar item-avatar-center item-avatar-xl text-center"
-                      style="background-color: #f4f4f4">
-            </ion-item>
-
-            <!--div class="padding text-center">
-                <p>
-                    Выберите номер телефона на который хотели бы отправить интерес.
-                    Вы можете указать несколько номеров для отправки.
-                </p>
-            </div-->
+            <div style="height: 15px"></div>
+            <div class="padding text-center">
+                <h1>{{chat.contact.name.formatted}}</h1>
+            </div>
 
 
             <ion-toggle ng-repeat="item in chat.phones"
@@ -24,28 +21,33 @@
                         ng-checked="item.checked">
                 <h3><small>{{ item.text }}</small></h3>
             </ion-toggle>
-
-
-
             <div style="height: 35px"></div>
 
-
-            <ion-checkbox ng-repeat="item in chat.interest" ng-model="item.checked" ng-checked="item.checked">
+            <div class="padding text-center">
+                <p style="font-size: 18px; color: #FA7470;">Выберите интерес</p>
+             </div>
+        <div class="int-checks">
+            <div class="row">
+                <div class="col col-50" ng-repeat="item in chat.interest" >
+                    <div class="btn-check">
+                        <input ng-model="item.checked" ng-checked="item.checked" type="checkbox" name="group-int" id="inte{{$index}}_{{chat.contactId}}" />
+                        <label for="inte{{$index}}_{{chat.contactId}}">{{ item.text }}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <!--ion-checkbox ng-repeat="item in chat.interest" ng-model="item.checked" ng-checked="item.checked">
                 {{ item.text }}
-            </ion-checkbox>
+            </ion-checkbox-->
 
             <!--ion-item class="item-icon-left" ng-click="chat.setNotification();">
                 <i class="icon ion-ios-chatbubble-outline positive"></i>
 
             </ion-item-->
 
-            <div class="padding text-center">
-                <a class="button button-clear button-large button-balanced " ng-click="chat.sendInteretsOneSms()" ng-disabled="chat.sendFlag()">
-                    Отправить
-                </a>
-            </div>
-
-            <div style="height: 35px"></div>
         </ion-list>
     </ion-content>
+    <ion-footer-bar class="footer-btn">
+        <button class="button button-balanced" ng-click="chat.sendInteretsOneSms()" ng-disabled="chat.sendFlag()">Отправить интерес<i class="ion-forward"></i></button>
+    </ion-footer-bar>
 </ion-view>
