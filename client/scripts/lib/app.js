@@ -37,8 +37,9 @@ Angular.module(App, [
   'angular-meteor.auth',
   'angularMoment',
   'ngMask',
-  'ionic'
-]).run(function($timeout, $ionicHistory ,$ionicPlatform, $rootScope,$ionicLoading) {
+  'helpmed.push',
+  'ionic' 
+]).run(function($timeout, $ionicHistory ,$ionicPlatform, $rootScope, $ionicLoading, pushService) {
   
 
 
@@ -61,6 +62,10 @@ Angular.module(App, [
     // org.apache.cordova.statusbar required
     StatusBar.styleLightContent();
   }
+  
+  if (window.PushNotification)
+    pushService.register();
+    
   
   
 });
