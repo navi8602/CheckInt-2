@@ -28,6 +28,7 @@
     "meteor-node-stubs": "^0.2.3",
     "moment": "^2.13.0",
     "shelljs": "^0.7.0",
-    "zone.js": "^0.6.12"
+    "zone.js": "^0.6.12",
+    "raix:push": "3.0.2"
   }
 }
