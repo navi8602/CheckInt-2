@@ -36,6 +36,7 @@ Angular.module(App, [
   'angular-meteor',
   'angular-meteor.auth',
   'angularMoment',
+  'ngMask',
   'ionic'
 ]).run(function($timeout, $ionicHistory ,$ionicPlatform, $rootScope,$ionicLoading) {
   

@@ -47,4 +47,4 @@ constructor() {
   }
 }
 
-SignIn.$inject = ['$state', '$ionicLoading', '$ionicPopup', '$log'];
+SignIn.$inject = ['$state', '$ionicLoading', '$ionicPopup','$log'];

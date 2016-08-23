@@ -38,10 +38,12 @@ export default class FriendDetail  extends Controller {
                 }
 
                 this.interest = [
-                    { text: 'Встреча', checked: self.math.indexOf('Встреча') > -1 ? true : false },
-                    { text: 'Дружба', checked: self.math.indexOf('Дружба') > -1 ? true : false},
+                    { text: 'Дружба', checked: self.math.indexOf('Дружба') > -1 ? true : false },
+                    { text: 'Свидание', checked: self.math.indexOf('Свидание') > -1 ? true : false},
                     { text: 'Флирт', checked: self.math.indexOf('Флирт') > -1 ? true : false},
-                    { text: 'Любовь', checked: self.math.indexOf('Любовь') > -1 ? true : false}
+                    { text: 'Любовь', checked: self.math.indexOf('Любовь') > -1 ? true : false},
+                    { text: 'Романтика', checked: self.math.indexOf('Романтика') > -1 ? true : false},
+                    { text: 'Близость', checked: self.math.indexOf('Близость') > -1 ? true : false}
                 ];
 
                 this.mathFlag = this.math.length > 0 ? true : false;
@@ -49,28 +51,32 @@ export default class FriendDetail  extends Controller {
                 if (!this.mathFlag){
 
                     this.interest = [
-                        { text: 'Встреча', checked: self.item.name.indexOf('Встреча') > -1 ? true : false },
-                        { text: 'Дружба', checked: self.item.name.indexOf('Дружба') > -1 ? true : false},
+                        { text: 'Дружба', checked: self.item.name.indexOf('Дружба') > -1 ? true : false },
+                        { text: 'Свидание', checked: self.item.name.indexOf('Свидание') > -1 ? true : false},
                         { text: 'Флирт', checked: self.item.name.indexOf('Флирт') > -1 ? true : false},
-                        { text: 'Любовь', checked: self.item.name.indexOf('Любовь') > -1 ? true : false}
+                        { text: 'Любовь', checked: self.item.name.indexOf('Любовь') > -1 ? true : false},
+                        { text: 'Романтика', checked: self.item.name.indexOf('Романтика') > -1 ? true : false},
+                        { text: 'Близость', checked: self.item.name.indexOf('Близость') > -1 ? true : false}
                     ];
 
                 }
             }
         });
-
+        this.interest = [
+            { text: 'Дружба', checked: self.math.indexOf('Дружба') > -1 ? true : false },
+            { text: 'Свидание', checked: self.math.indexOf('Свидание') > -1 ? true : false},
+            { text: 'Флирт', checked: self.math.indexOf('Флирт') > -1 ? true : false},
+            { text: 'Любовь', checked: self.math.indexOf('Любовь') > -1 ? true : false},
+            { text: 'Романтика', checked: self.math.indexOf('Романтика') > -1 ? true : false},
+            { text: 'Близость', checked: self.math.indexOf('Близость') > -1 ? true : false}
+        ];
         this.$scope.data={visible : false};
 
         this.$scope.historyBack = function () {
             window.history.back();
         };
 
-        this.interest = [
-            { text: 'Встреча', checked: self.math.indexOf('Встреча') > -1 ? true : false },
-            { text: 'Дружба', checked: self.math.indexOf('Дружба') > -1 ? true : false},
-            { text: 'Флирт', checked: self.math.indexOf('Флирт') > -1 ? true : false},
-            { text: 'Любовь', checked: self.math.indexOf('Любовь') > -1 ? true : false}
-        ];
+
     }
 
     showConfirmRemove() {

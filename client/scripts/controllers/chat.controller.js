@@ -14,10 +14,12 @@ export default class ChatCtrl extends Controller {
       this.inter = Interest.findOne({to_id: this.$stateParams.contactId});
       this.inter = this.inter && this.inter.name ? this.inter.name : [];
       this.interest = [
-        { text: 'Встреча', id: 'int1', checked: this.inter.indexOf('Встреча') > -1 ? true : false},
-        { text: 'Дружба', id: 'int2', checked: this.inter.indexOf('Дружба') > -1 ? true : false},
+        { text: 'Дружба', id: 'int1', checked: this.inter.indexOf('Дружба') > -1 ? true : false},
+        { text: 'Свидание', id: 'int2', checked: this.inter.indexOf('Свидание') > -1 ? true : false},
         { text: 'Флирт', id: 'int3', checked: this.inter.indexOf('Флирт') > -1 ? true : false},
-        { text: 'Любовь', id: 'int4', checked: this.inter.indexOf('Любовь') > -1 ? true : false}
+        { text: 'Любовь', id: 'int4', checked: this.inter.indexOf('Любовь') > -1 ? true : false},
+        { text: 'Романтика', id: 'int5', checked: this.inter.indexOf('Романтика') > -1 ? true : false},
+        { text: 'Близость', id: 'int6', checked: this.inter.indexOf('Близость') > -1 ? true : false}
       ];
     });
     this.phone = false;
