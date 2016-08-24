@@ -5,7 +5,7 @@ import { Chats } from '../../../lib/collections';
 export default class ChatsCtrl extends Controller {
   constructor() {
     super(...arguments);
-
+    
     var self = this;
 
     this.tab = 'all';
@@ -69,4 +69,4 @@ export default class ChatsCtrl extends Controller {
 
 }
 
-ChatsCtrl.$inject = ['NewChat','$state',  '$ionicModal','$scope','$ionicLoading', '$ionicPopup', '$log'];
+ChatsCtrl.$inject = ['NewChat','$state', '$ionicHistory', '$stateParams', '$ionicModal','$scope','$ionicLoading', '$ionicPopup', '$log'];

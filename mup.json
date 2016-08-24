@@ -1,0 +1,29 @@
+{
+  "servers": [
+    {
+      "host": "46.101.103.94",
+      "username": "root",
+      "password": "Werbyb86038603"
+    }
+  ],
+  "setupMongo": true,
+  "setupNode": true,
+  "nodeVersion": "4.4.2",
+  //"setupPhantom": false,
+
+  "enableUploadProgressBar": true,
+  "appName": "CheckInt",
+  "app": ".",
+  "env": {
+    "MONGO_URL": "mongodb://localhost:27017/checkint",
+    "ROOT_URL": "http://46.101.103.94"
+  },
+
+  /*"ssl": {
+    "certificate": "./ssl/bundle.crt", // this is a bundle of certificates
+    "key": "./ssl/call2doc.ru.key", // this is the private key of the certificate
+    "port": 443 // 443 is the default value and it's the standard HTTPS port
+  },*/
+
+  "deployCheckWaitTime": 60
+}

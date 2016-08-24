@@ -8,12 +8,19 @@ export default class FriendDetail  extends Controller {
         super(...arguments);
         var self = this;
         this.contactId = this.$stateParams.contactId;
-
+        
         this.math = [];
         this.mathFlag = false;
         this.phone = '';
         this.contactName = '';
-
+        this.interest = [
+            { text: 'Дружба', checked: self.math.indexOf('Дружба') > -1 ? true : false },
+            { text: 'Свидание', checked: self.math.indexOf('Свидание') > -1 ? true : false},
+            { text: 'Флирт', checked: self.math.indexOf('Флирт') > -1 ? true : false},
+            { text: 'Любовь', checked: self.math.indexOf('Любовь') > -1 ? true : false},
+            { text: 'Романтика', checked: self.math.indexOf('Романтика') > -1 ? true : false},
+            { text: 'Близость', checked: self.math.indexOf('Близость') > -1 ? true : false}
+        ];
         this.subscribe('interestSomeUserId', function() {
 
             this.math = [];
@@ -62,22 +69,42 @@ export default class FriendDetail  extends Controller {
                 }
             }
         });
-        this.interest = [
-            { text: 'Дружба', checked: self.math.indexOf('Дружба') > -1 ? true : false },
-            { text: 'Свидание', checked: self.math.indexOf('Свидание') > -1 ? true : false},
-            { text: 'Флирт', checked: self.math.indexOf('Флирт') > -1 ? true : false},
-            { text: 'Любовь', checked: self.math.indexOf('Любовь') > -1 ? true : false},
-            { text: 'Романтика', checked: self.math.indexOf('Романтика') > -1 ? true : false},
-            { text: 'Близость', checked: self.math.indexOf('Близость') > -1 ? true : false}
-        ];
+
         this.$scope.data={visible : false};
 
         this.$scope.historyBack = function () {
             window.history.back();
         };
 
-
+        
     }
+
+    sendFlag () {
+
+        let flag = true;
+        for(let i in this.interest) {
+            if(this.interest[i].checked == true) {
+                flag = false;
+                break;
+            }
+        }
+
+        if(flag) {
+            return true;
+        }
+
+        this.phone = false;
+
+        for(let i in this.phones) {
+            if(this.phones[i].checked == true && this.phone != false) {
+                return true;
+            } else if(this.phones[i].checked == true) {
+                this.phone = this.phones[i].text;
+            }
+        }
+
+        return this.phone ? false : true;
+    };
 
     showConfirmRemove() {
 
@@ -151,6 +178,7 @@ export default class FriendDetail  extends Controller {
         });
 
     }
+    
 
 }
 

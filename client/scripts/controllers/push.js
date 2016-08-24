@@ -33,8 +33,8 @@ angular.module('helpmed.push', ['ionic'])
                     Tracker.autorun(function () {
                         if (Meteor.userId()) {
                             console.log("Post token for registered device with data " + JSON.stringify(user));
-                            Meteor.call('user.setToken', self.regId, function() {
-                                console.log('user.setToken');
+                            Meteor.call('profile.token', self.regId, function() {
+                                console.log('profile.token');
                             });
                         }
                     });
@@ -54,12 +54,6 @@ angular.module('helpmed.push', ['ionic'])
                     console.log(data.sound);
                     console.log(data.image);
                     console.log(data.additionalData);
-                });
-
-                push.on('error', function (e) {
-                    e.message
-                    console.log(e.message);
-                    $ionicPopup.alert('Пуши работают но криво', e.message);
                 });
             }
             return { register: self.register };

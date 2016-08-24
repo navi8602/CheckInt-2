@@ -50,7 +50,6 @@ export default class InterestFriend  extends Controller {
         });
 
     }
-
 }
 
 InterestFriend.$inject = [ '$state','$stateParams', '$ionicLoading', '$timeout', '$ionicModal', '$ionicActionSheet', '$ionicScrollDelegate', 'NewChat', '$ionicPopup', '$log'];

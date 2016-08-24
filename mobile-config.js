@@ -10,14 +10,15 @@ App.info({
 });
 
 
+
 App.icons({
-    'iphone': 'resources/ios/icon/icon-60.png',
     'iphone_2x': 'resources/ios/icon/icon-60@2x.png',
-    'iphone_3x': 'resources/ios/icon/icon-60@3x.png'
+    'iphone_3x': 'resources/ios/icon/icon-60@3x.png',
+    'ipad': 'resources/ios/icon/icon-76.png',
+    'ipad_2x': 'resources/ios/icon/icon-76@2x.png'
 });
 
 App.launchScreens({
-    'iphone': 'resources/ios/splash/Default~iphone.png',
     'iphone_2x': 'resources/ios/splash/Default@2x~iphone.png',
     'iphone5': 'resources/ios/splash/Default-568h@2x~iphone.png',
     'iphone6': 'resources/ios/splash/Default-667h.png',
@@ -38,5 +39,5 @@ App.setPreference('Fullscreen', 'true');
 
 App.setPreference('KeyboardDisplayRequiresUserAction', 'false');
 
-//App.accessRule("blob:*");
-App.accessRule('http://46.101.103.94/*')
+App.accessRule("blob:*");
+App.accessRule('http://46.101.103.94/*');

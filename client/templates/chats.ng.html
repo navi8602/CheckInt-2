@@ -1,13 +1,4 @@
 <ion-view>
-        <!--div class="bar bar-subheader">
-        <div class="button-bar">
-            <a class="button" ng-click="chats.tab = 'all';chats.tabContacs();"
-               ng-class="{active: chats.tab=='all'}">Контакты</a>
-
-            <a class="button" ng-click="chats.tab = 'sended';chats.tabContacs();"
-               ng-class="{active: chats.tab == 'sended'}">Отправленые</a>
-        </div>
-    </div-->
     <ion-header-bar align-title="center" style="background: #FA7470">
         <h1 style="color: #ffffff" class="title">Ваши контакты</h1>
     </ion-header-bar>
@@ -23,10 +14,10 @@
       <ion-content>
           <div style="height: 42px"></div>
         <ion-list>
-            <ion-item ng-repeat="contact in chats.contacts | filter: search | orderBy:'name.formatted'" class="item" on-touch="onTouch()" nav-direction="forward"  href="#/chatse/{{ ::contact.id }}">
-                <h3>
-                    <small>{{::contact.name.formatted}}</small>
-                </h3>
+            <ion-item ng-repeat="contact in chats.contacts | filter: search | orderBy:'name.formatted'" class="item"   ng-href="#/chatse/{{ ::contact.id }}">
+
+                    <small style="font-weight: 500" on-tap="onTap()" nav-transition="none">{{::contact.name.formatted}}</small>
+
 
                 <ion-option-button on-drag-left="onDragLeft()" class="button-balanced" ng-click="chats.sendFrendSms(contact.phoneNumbers[0].value)">
                     Пригласить

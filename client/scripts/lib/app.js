@@ -26,7 +26,7 @@ import NewChatService from '../services/new-chat.service';
 
 
 import InterestFriend from '../controllers/interest.friend';
-import FriendDetail from '../controllers/friend.detail.js'
+import FriendDetail from '../controllers/friend.detail'
 import Routes from '../routes';
 
 const App = 'CheckInt';
