@@ -1,0 +1,21 @@
+{
+  "apn": {
+    "passphrase": "dtybr11",
+    "key": "ios/apn-production/PushChatKey.pem",
+    "cert": "ios/apn-production/PushChatCert.pem"
+  },
+  "apn-dev": {
+    "passphrase": "dtybr11",
+    "key": "ios/apn-development/PushChatKey.pem",
+    "cert": "ios/apn-development/PushChatCert.pem"
+  },
+  "gcm": {
+    "apiKey": "Your long Google API key",
+    "projectNumber": ""
+  },
+  "production": false,
+  "badge": true,
+  "sound": true,
+  "alert": true,
+  "vibrate": true
+}

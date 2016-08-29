@@ -28,7 +28,6 @@
     "ionic-scripts": "0.0.1",
     "meteor-node-stubs": "^0.2.3",
     "moment": "^2.13.0",
-    "raix:push": "3.0.2",
     "shelljs": "^0.7.0",
     "zone.js": "^0.6.12"
   }
