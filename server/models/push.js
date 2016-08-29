@@ -37,7 +37,7 @@ Meteor.methods({
             from: 'push',
             title: title,
             text: text,
-            //badge: 1, //optional, use it to set badge count of the receiver when the app is in background.
+            badge: 1, //optional, use it to set badge count of the receiver when the app is in background.
             token: token
             // tokens: array of appId's or tokens
             // payload: user data
