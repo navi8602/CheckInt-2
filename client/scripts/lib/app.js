@@ -87,8 +87,6 @@ new Loader(App)
     .load(Routes);
 //
 
-
-
 // Startup
 
 if (Meteor.isClient) {
@@ -103,15 +101,4 @@ if (Meteor.isClient) {
   else {
     angular.element(document).ready(onReady);
   }
-}
-
-
-function fixPhone(data) {
-  let phone = data.replace(/[^+0-9.]/g, '');
-
-  if(phone[0] == '8' && phone.length == 11) {
-    phone = '+7'+phone.substring(1);
-  }
-
-  return phone;
 }

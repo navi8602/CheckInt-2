@@ -33,14 +33,16 @@ angular.module('helpmed.push', ['ionic'])
                     Tracker.autorun(function () {
                         if (Meteor.userId()) {
                             console.log("Post token for registered device with data " + JSON.stringify(user));
-                            Meteor.call('profile.token', self.regId, function() {
+                            Meteor.call('user.updateToken', self.regId, function() {
                                 console.log('profile.token');
                             });
                         }
                     });
                 });
 
-                push.on('notification', function (data) {
+                push.
+                
+                on('notification', function (data) {
                     $ionicPopup.showLongTop(data.message);
                     // data.message,
                     // data.title,
