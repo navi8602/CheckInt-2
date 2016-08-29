@@ -4,15 +4,15 @@ Meteor.methods({
 
         Push.debug = true;
 
-        /*let token = Meteor.users.findOne({_id: user_id});
+        let token = Meteor.users.findOne({_id: user_id});
 
         if(token && token.profile && token.profile.token) {
-            token = token.profile.token;
+            token = {apn: token.profile.token };
         } else {
             return false;
-        }*/
+        }
 
-        let token = {apn: "a0d909333468c9afe88910031e72158aea6a8caff08143b349507f7252b0ef3c"};
+        //let token = {apn: "a0d909333468c9afe88910031e72158aea6a8caff08143b349507f7252b0ef3c"};
 
         let doc = Push.appCollection.findOne({
             $and: [
