@@ -74,7 +74,7 @@ Meteor.methods({
                 if(someSend) {
                     for (var k in someSend.name) {
                         if (name.indexOf(someSend.name[k]) > -1) {
-                            msg.text = 'У Вас совпали интересы с пользователем'+someSend.to_name+'!';
+                            msg.text = 'У Вас совпали интересы с пользователем '+someSend.to_name+'!';
                             break;
                         }
                     }
