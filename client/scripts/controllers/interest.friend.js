@@ -44,7 +44,7 @@ export default class InterestFriend  extends Controller {
 
         this.helpers({
             users() {
-                return Meteor.users.find({ _id: { $ne: this.currentUserId } });
+                return Meteor.users.find({ _id: {$ne: this.currentUserId } });
                 console.log(this.currentUserId);
             }
         });
@@ -52,4 +52,4 @@ export default class InterestFriend  extends Controller {
     }
 }
 
-InterestFriend.$inject = [ '$state','$stateParams', '$ionicLoading', '$timeout', '$ionicModal', '$ionicActionSheet', '$ionicScrollDelegate', 'NewChat', '$ionicPopup', '$log'];
+InterestFriend.$inject = [];
