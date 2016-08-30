@@ -3,7 +3,6 @@ import {_} from "meteor/underscore";
 import {Meteor} from "meteor/meteor";
 import {Controller} from "angular-ecmascript/module-helpers";
 
-
 export default class ChatCtrl extends Controller {
 
     constructor() {
@@ -38,13 +37,12 @@ export default class ChatCtrl extends Controller {
                 break;
             }
         }
+        
         this.phones = [];
         for (var i in this.contact.phoneNumbers) {
             this.phones.push({text: this.contact.phoneNumbers[i].value, checked: false});
         }
-
     }
-
 
     sendFlag() {
 
@@ -117,9 +115,7 @@ export default class ChatCtrl extends Controller {
 
 
         });
-
     }
-
 }
 
 ChatCtrl.$inject = ['$state', '$stateParams', '$ionicLoading', 'NewChat', '$ionicPopup'];

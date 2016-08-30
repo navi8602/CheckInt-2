@@ -7,8 +7,6 @@ Meteor.publish('users', function() {
 
 Meteor.publishComposite('chats', function() {
 
-
-
   if (!this.userId) return;
 
   return {
