@@ -80,7 +80,7 @@ export default class FriendDetail extends Controller {
 
     sendAgainFlag() {
         for(let i in this.interest) {
-            if(this.interest[i].checked) {
+            if(this.interest[i].checked == true) {
                 return true;
             }
         }
@@ -148,6 +148,10 @@ export default class FriendDetail extends Controller {
 
     sendInteretsOneSms() {
         var self = this;
+        
+        if(!this.sendAgainFlag()) {
+            return false;
+        }
 
         const confirmPopup = this.$ionicPopup.confirm({
             title: 'Отправка интереса',
