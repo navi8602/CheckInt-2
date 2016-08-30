@@ -111,7 +111,6 @@ export default class ChatsCtrl extends Controller {
         }*/
     }
 
-
     tabContacs() {
 
         var self = this;
