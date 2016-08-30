@@ -23,9 +23,7 @@ export default class LoginCtrl extends Controller {
         confirmPopup.then((res) => {
             if (!res) return;
 
-            this.$ionicLoading.show({
-                template: 'Отправка кода...'
-            });
+            this.$ionicLoading.show({ template: 'Отправка кода...' });
 
             Accounts.requestPhoneVerification(this.phone, (err) => {
                 this.$ionicLoading.hide();
