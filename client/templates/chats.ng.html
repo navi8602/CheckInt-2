@@ -14,10 +14,10 @@
       <ion-content>
           <div style="height: 42px"></div>
         <ion-list>
-            <ion-item ng-repeat="contact in chats.contacts | filter: search | orderBy:'name.formatted'" class="item"   ng-href="#/chatse/{{ ::contact.id }}">
-
-                    <small style="font-weight: 500" on-tap="onTap()" nav-transition="none">{{::contact.name.formatted}}</small>
-
+            <ion-item ng-repeat="contact in chats.contacts | filter: search | orderBy:'name.formatted'" class="item" on-touch="onTouch()" nav-direction="forward"  href="#/chatse/{{ ::contact.id }}">
+                <h3>
+                    <small style="font-weight: bold">{{::contact.name.formatted}}</small>
+                </h3>
 
                 <ion-option-button on-drag-left="onDragLeft()" class="button-balanced" ng-click="chats.sendFrendSms(contact.phoneNumbers[0].value)">
                     Пригласить
