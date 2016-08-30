@@ -1,4 +1,4 @@
-angular.module('checkint.push', ['$rootScope', 'ionic']).service('pushService', ['$rootScope', '$ionicPopup', function ($rootScope, $ionicPopup) {
+angular.module('checkint.push', ['ionic']).service('pushService', ['$rootScope', '$ionicPopup', function ($rootScope, $ionicPopup) {
     var self = {};
 
     self.register = function () {

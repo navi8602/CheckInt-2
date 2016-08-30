@@ -8,7 +8,7 @@ import 'angular-ui-router';
 import 'ionic-scripts';
 import Angular from 'angular';
 import Loader from 'angular-ecmascript/module-loader';
-import { Meteor } from 'meteor/meteor';
+import {Meteor} from 'meteor/meteor';
 
 // Modules
 import ChatsCtrl from '../controllers/chats.controller';
@@ -33,37 +33,36 @@ const App = 'CheckInt';
 
 // App
 Angular.module(App, [
-  'angular-meteor',
-  'angular-meteor.auth',
-  'angularMoment',
-  'ngMask',
-  'ionic',
-  'checkint.push'
-]).run(function($timeout, $ionicHistory ,$ionicPlatform, $rootScope, $ionicLoading, $ionicPopup, pushService) {
-  
+    'angular-meteor',
+    'angular-meteor.auth',
+    'angularMoment',
+    'ngMask',
+    'ionic',
+    'checkint.push'
+]).run(function ($timeout, $ionicHistory, $ionicPlatform, $rootScope, $ionicLoading, $ionicPopup, pushService) {
 
 
-  $rootScope.hideSplash = function() {
-    $ionicPlatform.ready(function() {
-      $timeout(function() {
-        if (navigator.splashscreen)
-          navigator.splashscreen.hide();
-      }, 1000);
-    })
-  };
+    $rootScope.hideSplash = function () {
+        $ionicPlatform.ready(function () {
+            $timeout(function () {
+                if (navigator.splashscreen)
+                    navigator.splashscreen.hide();
+            }, 1000);
+        })
+    };
 
-  if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-    cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-    cordova.plugins.Keyboard.disableScroll(true);
-  }
-  if (window.StatusBar) {
-    // org.apache.cordova.statusbar required
-    StatusBar.styleLightContent();
-  }
-  
-  if (window.PushNotification) {
-    pushService.register();
-  }
+    if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        cordova.plugins.Keyboard.disableScroll(true);
+    }
+    if (window.StatusBar) {
+        // org.apache.cordova.statusbar required
+        StatusBar.styleLightContent();
+    }
+
+    if (window.PushNotification) {
+        pushService.register();
+    }
 
 });
 
@@ -88,14 +87,14 @@ new Loader(App)
 
 if (Meteor.isClient) {
 
-  function onReady() {
-    angular.bootstrap(document, [App]);
-  }
+    function onReady() {
+        angular.bootstrap(document, [App]);
+    }
 
-  if (Meteor.isCordova) {
-    angular.element(document).on("deviceready", onReady);
-  }
-  else {
-    angular.element(document).ready(onReady);
-  }
+    if (Meteor.isCordova) {
+        angular.element(document).on("deviceready", onReady);
+    }
+    else {
+        angular.element(document).ready(onReady);
+    }
 }
