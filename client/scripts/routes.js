@@ -90,7 +90,7 @@ class RoutesConfig extends Config {
         .state('login', {
           url: '/login',
           templateUrl: 'client/templates/login.ng.html',
-          controller: 'SignIn as logger'
+          controller: 'LoginCtrl as logger'
         })
         .state('confirmation', {
           url: '/confirmation/:phone',

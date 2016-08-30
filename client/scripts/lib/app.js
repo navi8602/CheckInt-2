@@ -14,7 +14,7 @@ import {Meteor} from 'meteor/meteor';
 import ChatsCtrl from '../controllers/chats.controller';
 import ChatCtrl from '../controllers/chat.controller';
 import ConfirmationCtrl from '../controllers/confirmation.controller';
-import SignIn from '../controllers/login.controller';
+import LoginCtrl from '../controllers/login.controller';
 import NewChatCtrl from '../controllers/new-chat.controller';
 import SettingsCtrl from '../controllers/settings.controller';
 import InputDirective from '../directives/input.directive';
@@ -38,8 +38,6 @@ Angular.module(App, [
     //'checkint.push'
 ]).run(function () { //, pushService) {
 
-
-   
 
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -90,7 +88,7 @@ new Loader(App)
     .load(ChatsCtrl)
     .load(ChatCtrl)
     .load(ConfirmationCtrl)
-    .load(SignIn)
+    .load(LoginCtrl)
     .load(NewChatCtrl)
     .load(SettingsCtrl)
     .load(InputDirective)
