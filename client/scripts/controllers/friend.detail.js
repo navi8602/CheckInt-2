@@ -81,11 +81,11 @@ export default class FriendDetail extends Controller {
     sendAgainFlag() {
         for(let i in this.interest) {
             if(this.interest[i].checked == true) {
-                return true;
+                return false;
             }
         }
         
-        return false;
+        return true;
     }
 
     sendFlag() {
@@ -149,7 +149,7 @@ export default class FriendDetail extends Controller {
     sendInteretsOneSms() {
         var self = this;
         
-        if(!this.sendAgainFlag()) {
+        if(this.sendAgainFlag()) {
             return false;
         }
 
