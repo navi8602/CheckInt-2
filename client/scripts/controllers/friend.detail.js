@@ -78,6 +78,16 @@ export default class FriendDetail extends Controller {
 
     }
 
+    sendAgainFlag() {
+        for(let i in this.interest) {
+            if(this.interest[i].checked) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+
     sendFlag() {
 
         let flag = true;

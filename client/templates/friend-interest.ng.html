@@ -60,7 +60,7 @@
 
             <div style="height: 35px"></div>
 
-            <ion-item class="positive" ng-click="friends.sendInteretsOneSms();" ng-show="!friends.mathFlag">
+            <ion-item class="positive" ng-click="friends.sendInteretsOneSms();" ng-show="!friends.mathFlag" ng-disabled="friends.sendAgainFlag()">
                 Отправить снова
             </ion-item>
 
