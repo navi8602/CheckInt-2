@@ -23,8 +23,6 @@ export default class ChatCtrl extends Controller {
         });
         this.phone = false;
         this.contactId = this.$stateParams.contactId;
-        this.isIOS = Ionic.Platform.isWebView() && Ionic.Platform.isIOS();
-        this.isCordova = Meteor.isCordova;
         this.$scope.historyBack = function () {
             window.history.back();
         };
