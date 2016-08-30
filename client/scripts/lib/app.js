@@ -35,7 +35,7 @@ Angular.module(App, [
     'angularMoment',
     'ngMask',
     'ionic'
-]).run(function () { //, pushService) {
+]).run(function () {
 
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
