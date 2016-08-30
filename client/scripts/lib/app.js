@@ -37,9 +37,9 @@ Angular.module(App, [
   'angular-meteor.auth',
   'angularMoment',
   'ngMask',
-  'helpmed.push',
-  'ionic' 
-]).run(function($timeout, $ionicHistory ,$ionicPlatform, $rootScope, $ionicLoading, pushService) {
+  'ionic',
+  'checkint.push'
+]).run(function($timeout, $ionicHistory ,$ionicPlatform, $rootScope, $ionicLoading, $ionicPopup, pushService) {
   
 
 
@@ -52,8 +52,6 @@ Angular.module(App, [
     })
   };
 
-  
-  
   if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
     cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     cordova.plugins.Keyboard.disableScroll(true);
@@ -63,11 +61,10 @@ Angular.module(App, [
     StatusBar.styleLightContent();
   }
   
-  if (window.PushNotification)
+  if (window.PushNotification) {
     pushService.register();
-    
-  
-  
+  }
+
 });
 
 new Loader(App)
