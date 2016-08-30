@@ -6,7 +6,7 @@ export default class ChatsCtrl extends Controller {
 
         var self = this;
 
-        /*this.onDeviceReady = function () {
+        this.onDeviceReady = function () {
             var self = this;
 
             console.log('Загрузка контактов');
@@ -86,7 +86,7 @@ export default class ChatsCtrl extends Controller {
                     alert('onError!');
                 });
             }
-        };*/
+        };
 
         this.tab = 'all';
 
@@ -94,7 +94,7 @@ export default class ChatsCtrl extends Controller {
             template: 'Загрузка контактов...'
         });
 
-        document.addEventListener("deviceready", function() {
+        /*document.addEventListener("deviceready", function() {
             navigator.contacts.find(["*"], function (contacts) {
                 self.allContacts = contacts;
                 self.$ionicLoading.hide();
@@ -102,13 +102,13 @@ export default class ChatsCtrl extends Controller {
             }, function () {
                 alert('onError!');
             });
-        }, false);
+        }, false);*/
         
-        /*if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
+        if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
             document.addEventListener("deviceready", self.onDeviceReady, false);
         } else {
             self.onDeviceReady();
-        }*/
+        }
     }
 
     tabContacs() {
