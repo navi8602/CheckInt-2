@@ -22,7 +22,7 @@ export default class ChatsCtrl extends Controller {
                     "displayName": "Kate Bell",
                     "name": {"formatted": "Kate Bell"},
                     "phoneNumbers": [{
-                        "number": "(555) 564-8583",
+                        "number": "+7(903) 122-59-95",
                         "normalizedNumber": "(555) 564-8583",
                         "value": "(555) 564-8583",
                         "type": "MOBILE"
