@@ -137,7 +137,6 @@ export default class ChatsCtrl extends Controller {
         }
     }
 
-
     onContact(contact) {
         this.NewChat.contact = contact;
         this.$state.go('chatse', {contactId: contact.id})
