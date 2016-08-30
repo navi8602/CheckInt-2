@@ -1,6 +1,6 @@
-import {_} from "meteor/underscore";
-import {Accounts} from "meteor/accounts-base";
-import {Controller} from "angular-ecmascript/module-helpers";
+import { _ } from "meteor/underscore";
+import { Accounts } from "meteor/accounts-base";
+import { Controller } from "angular-ecmascript/module-helpers";
 
 export default class ConfirmationCtrl extends Controller {
     constructor() {
