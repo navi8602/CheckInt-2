@@ -16,7 +16,7 @@
   "app": ".",
   "env": {
     "MONGO_URL": "mongodb://localhost:27017/checkint",
-    "ROOT_URL": "http://46.101.103.94"
+    "ROOT_URL": "http://45.55.69.127"
   },
 
   /*"ssl": {

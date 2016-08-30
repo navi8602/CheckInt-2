@@ -16,17 +16,14 @@ import ChatCtrl from '../controllers/chat.controller';
 import ConfirmationCtrl from '../controllers/confirmation.controller';
 import SignIn from '../controllers/login.controller';
 import NewChatCtrl from '../controllers/new-chat.controller';
-
 import SettingsCtrl from '../controllers/settings.controller';
 import InputDirective from '../directives/input.directive';
 import CalendarFilter from '../filters/calendar.filter';
 import ChatNameFilter from '../filters/chat-name.filter';
 import ChatPictureFilter from '../filters/chat-picture.filter';
 import NewChatService from '../services/new-chat.service';
-
-
 import InterestFriend from '../controllers/interest.friend';
-import FriendDetail from '../controllers/friend.detail'
+import FriendDetail from '../controllers/friend.detail';
 import Routes from '../routes';
 
 const App = 'CheckInt';
@@ -39,17 +36,10 @@ Angular.module(App, [
     'ngMask',
     'ionic',
     //'checkint.push'
-]).run(function ($timeout, $ionicHistory, $ionicPlatform, $rootScope, $ionicLoading, $ionicPopup) { //, pushService) {
+]).run(function () { //, pushService) {
 
 
-    $rootScope.hideSplash = function () {
-        $ionicPlatform.ready(function () {
-            $timeout(function () {
-                if (navigator.splashscreen)
-                    navigator.splashscreen.hide();
-            }, 1000);
-        })
-    };
+   
 
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);

@@ -6,7 +6,7 @@ App.info({
     description: 'CheckInt project.',
     author: 'Goncharov Viktor',
     email: 'navi8602@gmail.com',
-    website: 'http://46.101.103.94'
+    website: 'http://45.55.69.127'
 });
 
 
@@ -40,4 +40,4 @@ App.setPreference('Fullscreen', 'true');
 App.setPreference('KeyboardDisplayRequiresUserAction', 'false');
 
 App.accessRule("blob:*");
-App.accessRule('http://46.101.103.94/*');
+App.accessRule('http://45.55.69.127/*');

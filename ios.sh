@@ -1,1 +1,1 @@
-meteor run ios-device --mobile-server http://46.101.103.94/
+meteor run ios-device --mobile-server http://45.55.69.127/
