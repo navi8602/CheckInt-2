@@ -36,6 +36,12 @@ Meteor.publish('interestByUserId', function(){
 });
 
 Meteor.publish('interestSomeUserId', function(){
-  var phone = Meteor.users.findOne({_id: this.userId}).phone.number;
-  return Interest.find({ $or: [{user_id: this.userId}, {to_phone: phone}] });
+  let data = Meteor.users.findOne({_id: this.userId}).phone.number;
+
+  if(data && data.phone && data.phone.number) {
+    return Interest.find({ $or: [{user_id: this.userId}, {to_phone: phone}] });
+  }
+
+  return null;
+
 });
