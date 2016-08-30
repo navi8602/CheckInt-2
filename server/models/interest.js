@@ -20,7 +20,7 @@ Meteor.methods({
 
         if(dataForPush) {
             if(dataForPush.profile && dataForPush.profile.token) {
-                pushSend(dataForPush._id, 'К Вам появили интерес!', 'Один из пользователей проявил к Вам интерес!');
+                pushSend(dataForPush._id, 'К Вам проявили интерес!', 'Один из пользователей проявил к Вам интерес!');
             }
         }
     },

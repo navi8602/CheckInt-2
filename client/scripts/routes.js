@@ -14,6 +14,7 @@ class RoutesConfig extends Config {
             .state('splash', {
                 url: '/splash',
                 templateUrl: 'client/templates/splash.ng.html',
+                controller: 'LoginCtrl as logger'
             })
             .state('tutor-1', {
                 url: '/tutor-1',
