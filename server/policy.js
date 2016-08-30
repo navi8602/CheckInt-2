@@ -10,7 +10,7 @@ var trusted = [
     '*.zendesk.com'
 ];
 
-_.each(trusted, function(origin) {
+_.each(trusted, function (origin) {
     origin = "http://" + origin;
     BrowserPolicy.content.allowOriginForAll(origin);
 });

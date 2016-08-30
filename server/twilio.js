@@ -1,22 +1,21 @@
-
 // Configure the Twilio client
-var  twilioClient = new Twilio({
-    from:  '+18048854059',
-    sid:   'AC1e4631d96bd3a5e3ea7e7db71cd6a1ed',
+var twilioClient = new Twilio({
+    from: '+18048854059',
+    sid: 'AC1e4631d96bd3a5e3ea7e7db71cd6a1ed',
     token: 'b5db96f9a7fc9c69ba188b643465b834'
 });
 
 
 Meteor.methods({
 
-    'twilio.sendSms': function(to, body){
+    'twilio.sendSms': function (to, body) {
 
         try {
 
             let phone = to.replace(/[^+0-9.]/g, '');
 
-            if(phone[0] == '8' && phone.length == 11) {
-                phone = '+7'+phone.substring(1);
+            if (phone[0] == '8' && phone.length == 11) {
+                phone = '+7' + phone.substring(1);
             }
 
             var result = twilioClient.sendSMS({
@@ -29,7 +28,7 @@ Meteor.methods({
         return result;
     },
 
-    'twilio.sendMMS': function(to, body, mediaUrl){
+    'twilio.sendMMS': function (to, body, mediaUrl) {
 
 
         try {

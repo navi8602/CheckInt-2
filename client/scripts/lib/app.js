@@ -97,10 +97,8 @@ new Loader(App)
     .load(InterestFriend)
     .load(FriendDetail)
     .load(Routes);
-//
 
 // Startup
-
 if (Meteor.isClient) {
 
     function onReady() {

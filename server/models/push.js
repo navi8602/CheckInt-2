@@ -1,12 +1,12 @@
 Meteor.methods({
 
-    'push.send': function(user_id, title, text) {
+    'push.send': function (user_id, title, text) {
 
         Push.debug = true;
 
         let token = Meteor.users.findOne({_id: user_id});
 
-        if(token && token.profile && token.profile.token) {
+        if (token && token.profile && token.profile.token) {
             token = token.profile.token;
         } else {
             return false;
@@ -16,9 +16,9 @@ Meteor.methods({
 
         let doc = Push.appCollection.findOne({
             $and: [
-                { token: token },     // Match token
-                { appName: 'checkInt' }, // Match appName
-                { token: { $exists: true } }  // Make sure token exists
+                {token: token},     // Match token
+                {appName: 'checkInt'}, // Match appName
+                {token: {$exists: true}}  // Make sure token exists
             ]
         });
 

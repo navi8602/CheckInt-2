@@ -1,6 +1,6 @@
-import { _ } from 'meteor/underscore';
-import { Accounts } from 'meteor/accounts-base';
-import { Controller } from "angular-ecmascript/module-helpers";
+import {_} from "meteor/underscore";
+import {Accounts} from "meteor/accounts-base";
+import {Controller} from "angular-ecmascript/module-helpers";
 
 export default class LoginCtrl extends Controller {
     constructor() {
@@ -23,7 +23,7 @@ export default class LoginCtrl extends Controller {
         confirmPopup.then((res) => {
             if (!res) return;
 
-            this.$ionicLoading.show({ template: 'Отправка кода...' });
+            this.$ionicLoading.show({template: 'Отправка кода...'});
 
             Accounts.requestPhoneVerification(this.phone, (err) => {
                 this.$ionicLoading.hide();
