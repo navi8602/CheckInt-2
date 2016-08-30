@@ -6,7 +6,7 @@ export default class ChatsCtrl extends Controller {
 
         var self = this;
 
-        this.onDeviceReady = function () {
+        /*this.onDeviceReady = function () {
             var self = this;
 
             console.log('Загрузка контактов');
@@ -86,7 +86,7 @@ export default class ChatsCtrl extends Controller {
                     alert('onError!');
                 });
             }
-        };
+        };*/
 
         this.tab = 'all';
 
