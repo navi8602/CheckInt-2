@@ -38,8 +38,8 @@ Angular.module(App, [
     'angularMoment',
     'ngMask',
     'ionic',
-    'checkint.push'
-]).run(function ($timeout, $ionicHistory, $ionicPlatform, $rootScope, $ionicLoading, $ionicPopup, pushService) {
+    //'checkint.push'
+]).run(function ($timeout, $ionicHistory, $ionicPlatform, $rootScope, $ionicLoading, $ionicPopup) { //, pushService) {
 
 
     $rootScope.hideSplash = function () {
@@ -61,7 +61,37 @@ Angular.module(App, [
     }
 
     if (window.PushNotification) {
-        pushService.register();
+        //pushService.register();
+        var token = {};
+
+        var push = window.PushNotification.init({
+            android: {senderID: "925925152744"},
+            ios: {alert: "true", badge: "true", sound: "true"},
+            windows: {}
+        });
+
+        push.on('registration', function (data) {
+            console.log("Post token registration call", data.registrationId);
+
+            if (ionic.Platform.isIOS()) {
+                token = {apn: data.registrationId};
+            } else if (ionic.Platform.isAndroid()) {
+                token = {apn: data.registrationId};
+            } else {
+                token = {apn: data.registrationId};
+            }
+
+            Tracker.autorun(function () {
+                if (Meteor.userId()) {
+                    Meteor.call('user.updateToken', token);
+                }
+            });
+        });
+
+        push.on('notification', function (data) {
+            console.log("data", data);
+            $ionicPopup.showLongTop(data.message);
+        });
     }
 
 });
