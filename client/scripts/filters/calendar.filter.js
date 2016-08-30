@@ -1,5 +1,5 @@
-import Moment from 'moment';
-import {Filter} from 'angular-ecmascript/module-helpers';
+import { Moment } from 'moment';
+import { Filter } from 'angular-ecmascript/module-helpers';
 
 export default class CalendarFilter extends Filter {
     filter(time) {

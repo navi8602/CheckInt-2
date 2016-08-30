@@ -1,6 +1,6 @@
-import {_} from 'meteor/underscore';
-import {Meteor} from 'meteor/meteor';
-import {Config, Runner} from 'angular-ecmascript/module-helpers';
+import { _ } from 'meteor/underscore';
+import { Meteor } from 'meteor/meteor';
+import { Config, Runner } from 'angular-ecmascript/module-helpers';
 
 class RoutesConfig extends Config {
     constructor() {

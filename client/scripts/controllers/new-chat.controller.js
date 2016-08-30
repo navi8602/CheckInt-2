@@ -1,6 +1,5 @@
-import {Meteor} from 'meteor/meteor';
-import {Controller} from 'angular-ecmascript/module-helpers';
-import {Chats} from '../../../lib/collections';
+import { Meteor } from 'meteor/meteor';
+import { Controller } from 'angular-ecmascript/module-helpers';
 
 export default class NewChatCtrl extends Controller {
     constructor() {

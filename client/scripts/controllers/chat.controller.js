@@ -1,8 +1,8 @@
-import Ionic from 'ionic-scripts';
-import {_} from 'meteor/underscore';
-import {Meteor} from 'meteor/meteor';
-import {Controller} from 'angular-ecmascript/module-helpers';
-import {Chats, Messages} from '../../../lib/collections';
+import { Ionic } from 'ionic-scripts';
+import { _ } from 'meteor/underscore';
+import { Meteor } from 'meteor/meteor';
+import { Controller } from 'angular-ecmascript/module-helpers';
+
 
 export default class ChatCtrl extends Controller {
 

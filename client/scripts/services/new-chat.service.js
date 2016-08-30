@@ -1,4 +1,4 @@
-import {Service} from 'angular-ecmascript/module-helpers';
+import { Service } from 'angular-ecmascript/module-helpers';
 
 export default class NewChatService extends Service {
     constructor() {

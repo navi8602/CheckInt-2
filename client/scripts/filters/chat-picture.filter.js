@@ -1,6 +1,6 @@
-import {_} from 'meteor/underscore';
-import {Meteor} from 'meteor/meteor';
-import {Filter} from 'angular-ecmascript/module-helpers';
+import { _ } from 'meteor/underscore';
+import { Meteor } from 'meteor/meteor';
+import { Filter } from 'angular-ecmascript/module-helpers';
 
 export default class ChatPictureFilter extends Filter {
     filter(chat) {
