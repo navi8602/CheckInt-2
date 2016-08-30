@@ -23,8 +23,6 @@ export default class ChatCtrl extends Controller {
         });
         this.phone = false;
         this.contactId = this.$stateParams.contactId;
-        this.isIOS = Ionic.Platform.isWebView() && Ionic.Platform.isIOS();
-        this.isCordova = Meteor.isCordova;
         this.$scope.historyBack = function () {
             window.history.back();
         };
@@ -118,4 +116,4 @@ export default class ChatCtrl extends Controller {
     }
 }
 
-ChatCtrl.$inject = ['$state', '$stateParams', '$ionicLoading', 'NewChat', '$ionicPopup',  '$timeout', '$ionicModal', '$ionicActionSheet', '$ionicScrollDelegate', '$log'];
+ChatCtrl.$inject = ['$state', '$stateParams', '$ionicLoading', 'NewChat'];
