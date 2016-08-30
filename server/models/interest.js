@@ -63,7 +63,24 @@ Meteor.methods({
 
         if(dataForPush) {
             if(dataForPush.profile && dataForPush.profile.token) {
-                pushSend(dataForPush._id, 'К Вам проявили интерес!', 'Один из пользователей проявил к Вам интерес!');
+
+                var msg = {
+                    title: 'К Вам проявили интерес!',
+                    text: 'Один из пользователей проявил к Вам интерес!'
+                };
+                
+                var someSend = Interest.findOne({to_phone: Meteor.user().phone.number, from_phone: phone});
+                
+                if(someSend) {
+                    for (var k in someSend.name) {
+                        if (name.indexOf(someSend.name[k]) > -1) {
+                            msg.text = 'У Вас совпали интересы с пользователем'+someSend.to_name+'!';
+                            break;
+                        }
+                    }
+                }
+                
+                pushSend(dataForPush._id, msg.title, msg.text);
             }
         }
     },
