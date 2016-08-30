@@ -118,4 +118,4 @@ export default class ChatCtrl extends Controller {
     }
 }
 
-ChatCtrl.$inject = ['$state', '$stateParams', '$ionicLoading', 'NewChat', '$ionicPopup'];
+ChatCtrl.$inject = ['$state', '$stateParams', '$ionicLoading', 'NewChat', '$ionicPopup',  '$timeout', '$ionicModal', '$ionicActionSheet', '$ionicScrollDelegate', '$log'];
