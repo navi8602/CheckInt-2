@@ -7,7 +7,7 @@ Meteor.methods({
         let token = Meteor.users.findOne({_id: user_id});
 
         if(token && token.profile && token.profile.token) {
-            token = {apn: token.profile.token };
+            token = token.profile.token;
         } else {
             return false;
         }

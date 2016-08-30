@@ -1,63 +1,38 @@
-angular.module('helpmed.push', ['ionic'])
-
+angular.module('helpmed.push', ['ionic', '$rootScope'])
     .service('pushService', ['$rootScope', '$ionicPopup',
         function($rootScope, $ionicPopup) {
             var self = {};
             var push;
             self.register = function () {
                 push = PushNotification.init({
-                    android: {
-                        senderID: "925925152744"
-                    },
-                    ios: {
-                        alert: "true",
-                        badge: "true",
-                        sound: "true"
-                    },
+                    android: { senderID: "925925152744" },
+                    ios: { alert: "true", badge: "true", sound: "true" },
                     windows: {}
                 });
 
                 push.on('registration', function (data) {
                     console.log("Post token registration call", data.registrationId);
-                    // data.registrationId
-                    if (ionic.Platform.isIOS())
-                        self.type = 'ios';
-                    else if (ionic.Platform.isAndroid())
-                        self.type = 'android';
-                    else self.type = 'xxx';
 
-                    self.regId = data.registrationId;
+                    if (ionic.Platform.isIOS()) {
+                        self.token = {apn: data.registrationId};
+                    } else if (ionic.Platform.isAndroid()) {
+                        self.token = {apn: data.registrationId};
+                    } else {
+                        self.token = {apn: data.registrationId};
+                    }
 
-                    var user = {type: self.type, token: self.regId};
-                    console.log(JSON.stringify(user));
                     Tracker.autorun(function () {
                         if (Meteor.userId()) {
-                            console.log("Post token for registered device with data " + JSON.stringify(user));
-                            Meteor.call('user.updateToken', self.regId, function() {
-                                console.log('profile.token');
-                            });
+                            Meteor.call('user.updateToken', self.token);
                         }
                     });
                 });
 
-                push.
-                
-                on('notification', function (data) {
-                    $ionicPopup.showLongTop(data.message);
-                    // data.message,
-                    // data.title,
-                    // data.count,
-                    // data.sound,
-                    // data.image,
+                push.on('notification', function (data) {
                     console.log("data", data);
-                    console.log(data.message);
-                    console.log(data.title);
-                    console.log(data.count);
-                    console.log(data.sound);
-                    console.log(data.image);
-                    console.log(data.additionalData);
+                    $ionicPopup.showLongTop(data.message);
                 });
-            }
+            };
             return { register: self.register };
 
         }]);
