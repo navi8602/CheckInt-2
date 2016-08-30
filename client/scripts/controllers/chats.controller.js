@@ -94,11 +94,21 @@ export default class ChatsCtrl extends Controller {
             template: 'Загрузка контактов...'
         });
 
-        if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
+        document.addEventListener("deviceready", function() {
+            navigator.contacts.find(["*"], function (contacts) {
+                self.allContacts = contacts;
+                self.$ionicLoading.hide();
+                self.tabContacs();
+            }, function () {
+                alert('onError!');
+            });
+        }, false);
+        
+        /*if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
             document.addEventListener("deviceready", self.onDeviceReady, false);
         } else {
             self.onDeviceReady();
-        }
+        }*/
     }
 
 
