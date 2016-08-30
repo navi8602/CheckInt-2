@@ -34,10 +34,8 @@ Angular.module(App, [
     'angular-meteor.auth',
     'angularMoment',
     'ngMask',
-    'ionic',
-    //'checkint.push'
+    'ionic'
 ]).run(function () { //, pushService) {
-
 
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -109,10 +107,5 @@ if (Meteor.isClient) {
         angular.bootstrap(document, [App]);
     }
 
-    if (Meteor.isCordova) {
-        angular.element(document).on("deviceready", onReady);
-    }
-    else {
-        angular.element(document).ready(onReady);
-    }
+    Meteor.isCordova ? angular.element(document).on("deviceready", onReady) : angular.element(document).ready(onReady);
 }
