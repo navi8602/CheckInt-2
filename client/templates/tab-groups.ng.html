@@ -10,7 +10,7 @@
         </div>
         <ion-list>
                 <ion-item ng-repeat="item in friend.list" class="item-avatar avatar-mine" type="item-text-wrap" href="#/friend_ineters/{{ ::item.to_id }}" >
-                    <img width="60px" ng-src="{{item.math && '/user-default2.svg' || '/user-default.svg'}}">
+                    <img style="width: 40px; height: 40px; margin-top:10px"  ng-src="{{item.math && '/img/plan-time-ok.png' || '/img/clock-blue.png'}}">
                     <h3>
                         <small>{{item.to_name}}</small>
                     </h3>

@@ -14,11 +14,18 @@ export default class ChatCtrl extends Controller {
             this.inter = this.inter && this.inter.name ? this.inter.name : [];
             this.interest = [
                 {text: 'Дружба', id: 'int1', checked: this.inter.indexOf('Дружба') > -1 ? true : false},
-                {text: 'Свидание', id: 'int2', checked: this.inter.indexOf('Свидание') > -1 ? true : false},
-                {text: 'Флирт', id: 'int3', checked: this.inter.indexOf('Флирт') > -1 ? true : false},
-                {text: 'Любовь', id: 'int4', checked: this.inter.indexOf('Любовь') > -1 ? true : false},
-                {text: 'Романтика', id: 'int5', checked: this.inter.indexOf('Романтика') > -1 ? true : false},
-                {text: 'Близость', id: 'int6', checked: this.inter.indexOf('Близость') > -1 ? true : false}
+                {text: 'Бизнес', id: 'int2', checked: this.inter.indexOf('Бизнес') > -1 ? true : false},
+                {text: 'Встреча', id: 'int3', checked: this.inter.indexOf('Встреча') > -1 ? true : false},
+                {text: 'Отношения', id: 'int4', checked: this.inter.indexOf('Отношения') > -1 ? true : false},
+                {text: 'Свадьба', id: 'int5', checked: this.inter.indexOf('Свадьба') > -1 ? true : false},
+                {text: 'Дети', id: 'int6', checked: this.inter.indexOf('Дети') > -1 ? true : false},
+                {text: 'Путешествия', id: 'int7', checked: this.inter.indexOf('Путешествия') > -1 ? true : false},
+                {text: 'Спорт', id: 'int8', checked: this.inter.indexOf('Спорт') > -1 ? true : false},
+                {text: 'Учеба', id: 'int9', checked: this.inter.indexOf('Учеба') > -1 ? true : false},
+                {text: 'Культура', id: 'int10', checked: this.inter.indexOf('Культура') > -1 ? true : false},
+                {text: 'Вещи', id: 'int11', checked: this.inter.indexOf('Вещи') > -1 ? true : false},
+                {text: 'Стиль жизни', id: 'int12', checked: this.inter.indexOf('Стиль жизни') > -1 ? true : false}
+
             ];
         });
         this.phone = false;

@@ -23,8 +23,8 @@ export default class ChatsCtrl extends Controller {
                     "name": {"formatted": "Kate Bell"},
                     "phoneNumbers": [{
                         "number": "+7(903) 122-59-95",
-                        "normalizedNumber": "(555) 564-8583",
-                        "value": "(555) 564-8583",
+                        "normalizedNumber": "+7(903) 122-59-95",
+                        "value": "+7(903) 122-59-95",
                         "type": "MOBILE"
                     }, {
                         "number": "(415) 555-3695",
@@ -32,7 +32,8 @@ export default class ChatsCtrl extends Controller {
                         "value": "(415) 555-3695",
                         "type": "OTHER"
                     }]
-                }, {
+                },
+                    {
                     "id": "2",
                     "firstName": "Daniel",
                     "middleName": "",

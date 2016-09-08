@@ -1,4 +1,4 @@
-<ion-view>
+<ion-view title="Ваши контакты">
     <ion-header-bar align-title="center" style="background: #FA7470">
         <h1 style="color: #ffffff" class="title">Ваши контакты</h1>
     </ion-header-bar>
@@ -11,18 +11,11 @@
             Отмена
         </button>
     </div>
-      <ion-content>
-          <div style="height: 42px"></div>
-        <ion-list>
-            <ion-item ng-repeat="contact in chats.contacts | filter: search | orderBy:'name.formatted'" class="item" on-touch="onTouch()" nav-direction="forward"  href="#/chatse/{{ ::contact.id }}">
-                <h3>
-                    <small style="font-weight: bold">{{::contact.name.formatted}}</small>
-                </h3>
-
-                <ion-option-button on-drag-left="onDragLeft()" class="button-balanced" ng-click="chats.sendFrendSms(contact.phoneNumbers[0].value)">
-                    Пригласить
-                </ion-option-button>
-
+    <ion-content padding="false" class="has-header">
+        <div style="height: 42px"></div>
+        <ion-list id="page2-list6">
+            <ion-item class="dark"  href="#/chatse/{{ ::contact.id }}" ng-repeat="contact in chats.contacts | filter: search | orderBy:'name.formatted'">
+                <small style="font-weight: bold">{{contact.name.formatted}}</small>
             </ion-item>
         </ion-list>
     </ion-content>

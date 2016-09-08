@@ -2,9 +2,15 @@
     <ion-header-bar align-title="center" style="background: #FA7470">
         <h1 style="color: #ffffff" class="title">Настройки</h1>
     </ion-header-bar>
-  <ion-content>
-    <div class="padding text-center">
-      <button ng-click="settings.logout()" class="button button-clear button-assertive">Выход</button>
-    </div>
-  </ion-content>
+    <ion-content padding="false" class="has-header">
+        <div class="spacer" style="width: 320px; height: 38px;"></div>
+        <div class="spacer" style="width: 320px; height: 20px;"></div>
+        <button id="page4-button6" ng-click="settings.logout()" style="font-weight:300;font-size:24px;" class="button button-assertive  button-block button-clear">Выйти</button>
+        <div class="spacer" style="width: 300px; height: 23px;"></div>
+        <form id="page4-form3" class="list">
+            <ion-item class="item-divider" id="page4-list-item-divider1">Push-Уведомления</ion-item>
+            <ion-toggle toggle-class="toggle-balanced" ng-checked="true" id="page4-toggle1" ng-disabled="!confirmation.code || confirmation.code.length === 0">Запрос интереса</ion-toggle>
+            <ion-toggle toggle-class="toggle-balanced" ng-checked="true" id="page4-toggle5" ng-disabled="!confirmation.code || confirmation.code.length === 0">Совпадения</ion-toggle>
+        </form>
+    </ion-content>
 </ion-view>

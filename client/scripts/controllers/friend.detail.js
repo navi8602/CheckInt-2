@@ -14,11 +14,17 @@ export default class FriendDetail extends Controller {
         this.contactName = '';
         this.interest = [
             {text: 'Дружба', checked: self.math.indexOf('Дружба') > -1 ? true : false},
-            {text: 'Свидание', checked: self.math.indexOf('Свидание') > -1 ? true : false},
-            {text: 'Флирт', checked: self.math.indexOf('Флирт') > -1 ? true : false},
-            {text: 'Любовь', checked: self.math.indexOf('Любовь') > -1 ? true : false},
-            {text: 'Романтика', checked: self.math.indexOf('Романтика') > -1 ? true : false},
-            {text: 'Близость', checked: self.math.indexOf('Близость') > -1 ? true : false}
+            {text: 'Бизнес', checked: self.math.indexOf('Бизнес') > -1 ? true : false},
+            {text: 'Встреча', checked: self.math.indexOf('Встреча') > -1 ? true : false},
+            {text: 'Отношения', checked: self.math.indexOf('Отношения') > -1 ? true : false},
+            {text: 'Свадьба', checked: self.math.indexOf('Свадьба') > -1 ? true : false},
+            {text: 'Дети', checked: self.math.indexOf('Дети') > -1 ? true : false},
+            {text: 'Путешествия', checked: self.math.indexOf('Путешествия') > -1 ? true : false},
+            {text: 'Спорт', checked: self.math.indexOf('Спорт') > -1 ? true : false},
+            {text: 'Учеба', checked: self.math.indexOf('Учеба') > -1 ? true : false},
+            {text: 'Культура', checked: self.math.indexOf('Культура') > -1 ? true : false},
+            {text: 'Вещи', checked: self.math.indexOf('Вещи') > -1 ? true : false},
+            {text: 'Стиль жизни', checked: self.math.indexOf('Стиль жизни') > -1 ? true : false}
         ];
         this.subscribe('interestSomeUserId', function () {
 
@@ -45,11 +51,17 @@ export default class FriendDetail extends Controller {
 
                 this.interest = [
                     {text: 'Дружба', checked: self.math.indexOf('Дружба') > -1 ? true : false},
-                    {text: 'Свидание', checked: self.math.indexOf('Свидание') > -1 ? true : false},
-                    {text: 'Флирт', checked: self.math.indexOf('Флирт') > -1 ? true : false},
-                    {text: 'Любовь', checked: self.math.indexOf('Любовь') > -1 ? true : false},
-                    {text: 'Романтика', checked: self.math.indexOf('Романтика') > -1 ? true : false},
-                    {text: 'Близость', checked: self.math.indexOf('Близость') > -1 ? true : false}
+                    {text: 'Бизнес', checked: self.math.indexOf('Бизнес') > -1 ? true : false},
+                    {text: 'Встреча', checked: self.math.indexOf('Встреча') > -1 ? true : false},
+                    {text: 'Отношения', checked: self.math.indexOf('Отношения') > -1 ? true : false},
+                    {text: 'Свадьба', checked: self.math.indexOf('Свадьба') > -1 ? true : false},
+                    {text: 'Дети', checked: self.math.indexOf('Дети') > -1 ? true : false},
+                    {text: 'Путешествия', checked: self.math.indexOf('Путешествия') > -1 ? true : false},
+                    {text: 'Спорт', checked: self.math.indexOf('Спорт') > -1 ? true : false},
+                    {text: 'Учеба', checked: self.math.indexOf('Учеба') > -1 ? true : false},
+                    {text: 'Культура', checked: self.math.indexOf('Культура') > -1 ? true : false},
+                    {text: 'Вещи', checked: self.math.indexOf('Вещи') > -1 ? true : false},
+                    {text: 'Стиль жизни', checked: self.math.indexOf('Стиль жизни') > -1 ? true : false}
                 ];
 
                 this.mathFlag = this.math.length > 0 ? true : false;
@@ -58,11 +70,17 @@ export default class FriendDetail extends Controller {
 
                     this.interest = [
                         {text: 'Дружба', checked: self.item.name.indexOf('Дружба') > -1 ? true : false},
-                        {text: 'Свидание', checked: self.item.name.indexOf('Свидание') > -1 ? true : false},
-                        {text: 'Флирт', checked: self.item.name.indexOf('Флирт') > -1 ? true : false},
-                        {text: 'Любовь', checked: self.item.name.indexOf('Любовь') > -1 ? true : false},
-                        {text: 'Романтика', checked: self.item.name.indexOf('Романтика') > -1 ? true : false},
-                        {text: 'Близость', checked: self.item.name.indexOf('Близость') > -1 ? true : false}
+                        {text: 'Бизнес', checked: self.item.name.indexOf('Бизнес') > -1 ? true : false},
+                        {text: 'Встреча', checked: self.item.name.indexOf('Встреча') > -1 ? true : false},
+                        {text: 'Отношения', checked: self.item.name.indexOf('Отношения') > -1 ? true : false},
+                        {text: 'Свадьба', checked: self.item.name.indexOf('Свадьба') > -1 ? true : false},
+                        {text: 'Дети', checked: self.item.name.indexOf('Дети') > -1 ? true : false},
+                        {text: 'Путешествия', checked: self.item.name.indexOf('Путешествия') > -1 ? true : false},
+                        {text: 'Спорт', checked: self.item.name.indexOf('Спорт') > -1 ? true : false},
+                        {text: 'Учеба', checked: self.item.name.indexOf('Учеба') > -1 ? true : false},
+                        {text: 'Культура', checked: self.item.name.indexOf('Культура') > -1 ? true : false},
+                        {text: 'Вещи', checked: self.item.name.indexOf('Вещи') > -1 ? true : false},
+                        {text: 'Стиль жизни', checked: self.item.name.indexOf('Стиль жизни') > -1 ? true : false}
                     ];
 
                 }
