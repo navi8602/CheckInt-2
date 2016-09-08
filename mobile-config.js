@@ -1,7 +1,7 @@
 App.info({
     id:"com.checkInt.mobillan",
-    buildNumber: "777",
-    version: "7.7.7",
+    buildNumber: "888",
+    version: "8.8.8",
     name: 'CheckInt',
     description: 'CheckInt project.',
     author: 'Goncharov Viktor',
@@ -28,13 +28,15 @@ App.launchScreens({
 
 });
 
-
-App.setPreference('AutoHideSplashScreen' ,'false');
+App.setPreference('SplashScreen', 'screen');
+App.setPreference('SplashScreenDelay', '30000');
+App.setPreference('AutoHideSplashScreen' ,'true');
+App.setPreference('FadeSplashScreenDuration', '1000');
+App.setPreference('FadeSplashScreen', 'false');
+App.setPreference("ShowSplashScreenSpinner","true");
 App.setPreference('BackupWebStorage' ,'local');
 App.setPreference('HideKeyboardFormAccessoryBar', 'true');
 App.setPreference('DisallowOverscroll', 'true');
-App.setPreference('SplashScreen', 'screen');
-App.setPreference('SplashScreenDelay', '10000');
 App.setPreference('Fullscreen', 'true');
 
 App.setPreference('KeyboardDisplayRequiresUserAction', 'false');

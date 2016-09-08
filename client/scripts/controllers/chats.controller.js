@@ -5,6 +5,7 @@ export default class ChatsCtrl extends Controller {
         super(...arguments);
 
         var self = this;
+        
 
         this.onDeviceReady = function () {
             var self = this;
@@ -94,7 +95,7 @@ export default class ChatsCtrl extends Controller {
         this.$ionicLoading.show({
             template: 'Загрузка контактов...'
         });
-
+        
         document.addEventListener("deviceready", function() {
             navigator.contacts.find(["*"], function (contacts) {
                 self.allContacts = contacts;
@@ -153,4 +154,4 @@ export default class ChatsCtrl extends Controller {
 
 }
 
-ChatsCtrl.$inject = ['NewChat', '$state', '$ionicLoading'];
+ChatsCtrl.$inject = ['NewChat', '$state', '$scope', '$ionicLoading'];

@@ -2,7 +2,7 @@
 // Configure the Twilio client
 var  twilioClient = new Twilio({
     from:  '+18048854059',
-    sid:   'AC1e4631d96bd3a5e3ea7e7db71cd6a1ed',
+    sid:   'MG4bafdc88857b2d58d149bf7f42108b8b',
     token: 'b5db96f9a7fc9c69ba188b643465b834'
 });
 
